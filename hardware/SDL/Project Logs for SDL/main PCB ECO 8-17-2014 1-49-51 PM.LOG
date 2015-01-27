@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=B\L\E\_\C\S\ Pin=U1-29
+Removed Pin From Net: NetName=B\L\E\_\R\D\Y\ Pin=U1-30
+Removed Pin From Net: NetName=BLE_ACTIVE Pin=U1-31
+Removed Pin From Net: NetName=NETWORK_CTRL Pin=U1-50
+Removed Pin From Net: NetName=LED_DRIVE Pin=U1-51
+Removed Pin From Net: NetName=RTC_INT Pin=U1-52
+Removed Pin From Net: NetName=CC2538/N\R\F\8\0\0\1\ Pin=U1-53
+Removed Pin From Net: NetName=B\L\E\_\R\E\S\E\T\ Pin=U1-54
+Added Pin To Net: NetName=NETWORK_CTRL Pin=U1-29
+Added Pin To Net: NetName=LED_DRIVE Pin=U1-30
+Added Pin To Net: NetName=RTC_INT Pin=U1-31
+Added Pin To Net: NetName=CC2538/N\R\F\8\0\0\1\ Pin=U1-50
+Added Pin To Net: NetName=B\L\E\_\R\E\S\E\T\ Pin=U1-51
+Added Pin To Net: NetName=B\L\E\_\R\D\Y\ Pin=U1-52
+Added Pin To Net: NetName=B\L\E\_\C\S\ Pin=U1-53
+Added Pin To Net: NetName=BLE_ACTIVE Pin=U1-54

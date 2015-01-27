@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=NETWORK_CTRL Pin=J5-2
+Removed Pin From Net: NetName=NETWORK_C\S\ Pin=J5-4
+Added Pin To Net: NetName=NETWORK_C\S\ Pin=J5-2
+Added Pin To Net: NetName=NETWORK_CTRL Pin=J5-4

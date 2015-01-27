@@ -1,0 +1,12 @@
+Added Component: Designator=SW?(CHS-06TA)
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=SW?-3
+Added Pin To Net: NetName=NetR15_2 Pin=SW?-4
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=SW?-5
+Added Pin To Net: NetName=NetR16_2 Pin=SW?-6
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=SW?-7
+Added Pin To Net: NetName=NetR17_2 Pin=SW?-8
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=SW?-9
+Added Pin To Net: NetName=NetR18_2 Pin=SW?-10
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=SW?-11
+Added Pin To Net: NetName=NetR19_2 Pin=SW?-12
+Added Member To Class: ClassName=U_main_IO Member=Component SW? CHS-06TA

@@ -1,0 +1,32 @@
+Removed Pin From Net: NetName=NetC4_1 Pin=C4-1
+Removed Pin From Net: NetName=NETWORK_INT Pin=R14-2
+Removed Pin From Net: NetName=NetC4_1 Pin=U1-32
+Removed Pin From Net: NetName=JTAG_TCK Pin=U1-46
+Removed Pin From Net: NetName=JTAG_TMS Pin=U1-47
+Change Component DesignItemId : Designator=R21 Old DesignItemId=R_2.2K_0402 New DesignItemId=R_100K_0402
+Change Component Description : Designator=R21 Old Description=Chip resistor, 2.2K, 0402 package New Description=Chip resistor, 100K, 0402 package
+Added Pin To Net: NetName=NetC2_1 Pin=C4-1
+Added Pin To Net: NetName=NetC4_1 Pin=R14-2
+Added Pin To Net: NetName=NETWORK_INT Pin=U1-8
+Added Pin To Net: NetName=NetC2_1 Pin=U1-32
+Added Pin To Net: NetName=JTAG_TMS Pin=U1-46
+Added Pin To Net: NetName=JTAG_TCK Pin=U1-47
+Added Pin To Net: NetName=NetC4_1 Pin=Y4-2
+Change Net Name : Old Net Name=NetC4_1 New Net Name=RTC_CLKOUT
+Change Net Name : Old Net Name=NetJ3_1 New Net Name=LED_DRIVE
+Change Net Name : Old Net Name=NetJ4_2 New Net Name=SPI_SCK
+Change Net Name : Old Net Name=NetJ4_3 New Net Name=SPI_MOSI
+Change Net Name : Old Net Name=NetJ4_4 New Net Name=SPI_MISO
+Change Net Name : Old Net Name=NetJ5_2 New Net Name=NETWORK_C\S\
+Change Net Name : Old Net Name=NetJ5_4 New Net Name=NETWORK_CTRL
+Change Net Name : Old Net Name=NetR12_2 New Net Name=I2C_SDA
+Change Net Name : Old Net Name=NetR13_2 New Net Name=I2C_SCL
+Change Net Name : Old Net Name=NetR20_1 New Net Name=B\L\E\_\R\E\S\E\T\
+Change Net Name : Old Net Name=NetR23_2 New Net Name=F\L\A\S\H\_\H\O\L\D\
+Change Net Name : Old Net Name=NetR24_2 New Net Name=F\L\A\S\H\_\W\P\
+Change Net Name : Old Net Name=NetU1_16 New Net Name=ROM_UART_RXD
+Change Net Name : Old Net Name=NetU1_17 New Net Name=ROM_UART_TXD
+Change Net Name : Old Net Name=NetU1_18 New Net Name=ROM_CONTROL
+Change Net Name : Old Net Name=NetU1_26 New Net Name=F\L\A\S\H\_\C\S\
+Change Net Name : Old Net Name=NetU1_29 New Net Name=B\L\E\_\C\S\
+Change Net Name : Old Net Name=VCONT1 New Net Name=CC2538/N\R\F\8\0\0\1\

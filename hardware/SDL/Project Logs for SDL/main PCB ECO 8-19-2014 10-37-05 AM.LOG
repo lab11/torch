@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=I2C_SCL Pin=U1-29
+Removed Pin From Net: NetName=RTC_INT Pin=U1-31
+Added Pin To Net: NetName=RTC_INT Pin=U1-29
+Added Pin To Net: NetName=I2C_SCL Pin=U1-31

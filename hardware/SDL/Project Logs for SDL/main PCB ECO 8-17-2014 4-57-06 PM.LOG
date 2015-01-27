@@ -1,0 +1,6 @@
+Added Component: Designator=J1(Micro USB-B)
+Added Pin To Net: NetName=VUSB Pin=J1-1
+Added Pin To Net: NetName=USB_N Pin=J1-2
+Added Pin To Net: NetName=USB_P Pin=J1-3
+Added Pin To Net: NetName=GND Pin=J1-5
+Added Member To Class: ClassName=U_main_ftdi Member=Component J1 micro USB-B

@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=VCC5 Pin=U1-1
+Added Component: Designator=R?(J1-0603)
+Added Pin To Net: NetName=VCC5 Pin=R?-2
+Added Pin To Net: NetName=NetR?_1 Pin=R?-1
+Added Pin To Net: NetName=NetR?_1 Pin=U1-1
+Added Net: Name=NetR?_1
+Added Member To Class: ClassName=cree_module Member=Component R? Res3

@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=JTAG_TCK Pin=P2-3
+Removed Pin From Net: NetName=JTAG_TMS Pin=P2-4
+Added Pin To Net: NetName=JTAG_TMS Pin=P2-3
+Added Pin To Net: NetName=JTAG_TCK Pin=P2-4

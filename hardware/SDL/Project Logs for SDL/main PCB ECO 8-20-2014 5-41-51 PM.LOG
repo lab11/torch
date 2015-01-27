@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=GND Pin=J3-3
+Removed Pin From Net: NetName=GND Pin=J3-4
+Removed Pin From Net: NetName=JTAG_TDO Pin=U1-48
+Removed Pin From Net: NetName=JTAG_TDI Pin=U1-49
+Added Component: Designator=P2(2x2 header SMD)
+Added Pin To Net: NetName=JTAG_TDO Pin=J3-3
+Added Pin To Net: NetName=JTAG_TDI Pin=J3-4
+Added Pin To Net: NetName=CC2538_RESETN Pin=P2-1
+Added Pin To Net: NetName=GND Pin=P2-2
+Added Pin To Net: NetName=JTAG_TCK Pin=P2-3
+Added Pin To Net: NetName=JTAG_TMS Pin=P2-4
+Added Pin To Net: NetName=JTAG_TDI Pin=U1-48
+Added Pin To Net: NetName=JTAG_TDO Pin=U1-49
+Change Net Name : Old Net Name=JTAG_TDI New Net Name=LED_DRIVE2
+Change Net Name : Old Net Name=JTAG_TDO New Net Name=LED_DRIVE1
+Change Net Name : Old Net Name=LED_DRIVE New Net Name=LED_DRIVE0
+Added Member To Class: ClassName=U_main_connector Member=Component P2 2 x 2 header SMD

@@ -1,0 +1,21 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: cree_lamp.PcbDoc   5/20/2014  6:54:02 PM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : cree_lamp.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        20mil (0.508mm)          Round          9                2.30 Inch (58.44 mm)
+T2        29.5mil (0.7493mm)       Round          3                0.28 Inch (7.18 mm)
+T3        31.5mil (0.8001mm)       Round          3                0.16 Inch (4.00 mm)
+T4        35.4mil (0.89916mm)      Round          2                0.10 Inch (2.54 mm)
+T5        47.2mil (1.19888mm)      Round          2                0.10 Inch (2.54 mm)
+T6        55.1mil (1.39954mm)      Round          2                0.10 Inch (2.54 mm)
+T7        63mil (1.6002mm)         Round          5                2.13 Inch (54.22 mm)
+T8        75.2mil (1.91008mm)      Round          3                0.55 Inch (14.08 mm)
+---------------------------------------------------------------------------
+Totals                                            29               5.73 Inch (145.55 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

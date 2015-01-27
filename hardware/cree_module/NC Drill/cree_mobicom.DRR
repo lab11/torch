@@ -1,0 +1,16 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: cree_mobicom.PcbDoc   7/24/2014  10:41:00 AM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : cree_mobicom.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        20mil (0.508mm)          Round          49               4.45 Inch (112.94 mm)
+T2        90mil (2.286mm)          Round          2                1.81 Inch (45.98 mm)
+T3        125mil (3.175mm)         Round          2                1.46 Inch (37.01 mm)
+---------------------------------------------------------------------------
+Totals                                            53               7.71 Inch (195.94 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

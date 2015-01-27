@@ -1,0 +1,12 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : PCB Document [cree_mobicom.PcbDoc]
+   Generated File[cree_mobicom.TXT]
+   Generated File[cree_mobicom.LDP]
+   Generated File[cree_mobicom.DRR]
+
+
+Files Generated   : 3
+Documents Printed : 0
+
+Finished Output Generation At 10:41:01 AM On 7/24/2014

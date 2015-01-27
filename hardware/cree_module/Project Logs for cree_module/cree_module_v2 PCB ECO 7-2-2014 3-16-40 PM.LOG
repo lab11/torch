@@ -1,0 +1,4 @@
+Added Component: Designator=SW1(Rocker switch)
+Added Pin To Net: NetName=VIN Pin=SW1-1A
+Added Pin To Net: NetName=NetJ1_1 Pin=SW1-1
+Added Member To Class: ClassName=cree_module Member=Component SW1 D502J12S2AHQF

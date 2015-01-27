@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=VIN Pin=J5-1
+Added Pin To Net: NetName=GND Pin=J1-2
+Added Pin To Net: NetName=VIN Pin=J3-1
+Added Pin To Net: NetName=GND Pin=J3-2
+Added Pin To Net: NetName=NetJ1_1 Pin=J1-1
+Added Pin To Net: NetName=NetJ1_1 Pin=J5-1
+Added Net: Name=NetJ1_1
+Added Room: Name=main_pwr

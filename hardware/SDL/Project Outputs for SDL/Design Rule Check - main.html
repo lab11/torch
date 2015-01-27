@@ -1,0 +1,507 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body {
+			font-family : verdana;
+		}
+		td, th {
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;
+		}
+		th {
+			background-color : #A6CAF0;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+		}
+		
+		.DRC_summary_header {							
+			padding-bottom : 0.1em;
+			border : 0px solid black;							
+			width: 100%;
+                        align: right;
+                        
+		}
+
+		.DRC_summary_header_col1, 
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3
+		{
+			color : black;
+			font-size:150%;
+                        padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2: 0em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top;
+			font-weight: bold;				
+		}
+		
+		.DRC_summary_header_col1 	
+		{		                       
+			text-align: right;
+                        width: auto;	
+		}
+
+		.DRC_summary_header_col2 	
+		{		
+			text-align: center;	
+		}
+
+		.DRC_summary_header_col3 	
+		{		
+			text-align: left;	
+		}
+
+
+		
+		.header_holder
+		{
+		Width = 100%;
+		border = 0px solid green;
+		padding = 0;
+		}
+		
+		
+		
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+			left:0;
+			top:0;
+			padding-top : 0.1em;			
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top
+
+		}
+		.front_matter {	
+			
+			margin-top: 5px;
+ 			margin-left: 0px;					 			
+ 			horizontal-align: left;
+		}
+				
+		
+		.front_matter_column1 {
+			width : 10em;	
+			text-align  : right;
+			padding-right:0.1em;
+			
+		}
+		
+		.front_matter_column2 {
+                        width: 0.1em;
+			align: center;
+			text-align : center;
+			margin-right  : 0.1em;	
+			margin-left   : 0.1em;
+		}
+		.front_matter_column3 {
+			width         : auto;  
+			text-align    : left;	
+			margin-right  : 0.5em;				
+		}
+		
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD14\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td Style="width:70%">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">9/2/2014</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">9:57:06 AM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc" class="file"><acronym title="C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc">C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td Style="Width:30%">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3" style="color : red">41</td></tr>
+</table>
+</td>
+</table>
+<hr><a name="IDASAUBC"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAEBUBC">Clearance Constraint (Gap=6mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAKBUBC">Width Constraint (Min=6mil) (Max=100mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAQBUBC">Power Plane Connect Rule(Relief Connect )(Expansion=10mil) (Conductor Width=8mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAWBUBC">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA2BUBC">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDACCUBC">Minimum Annular Ring (Minimum=6mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAICUBC">Hole Size Constraint (Min=8mil) (Max=251mil) (All)</a></td>
+<td class="column2">40</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDABSUBC">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAHSUBC">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDANSUBC">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDATSUBC">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAZSUBC">Minimum Solder Mask Sliver (Gap=10mil) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA5SUBC">Silk To Solder Mask (Clearance=10mil) (Disabled)(IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAFTUBC">Silk to Silk (Clearance=10mil) (Disabled)(All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDALTUBC">Silk primitive without silk layer</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAXTUBC">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA3TUBC">Room U_main_connector (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_connector'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDADUUBC">Room U_main_ftdi (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_ftdi'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAJUUBC">Room U_main_IO (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_IO'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAPUUBC">Room U_main_mem (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_mem'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAVUUBC">Room U_main_pwr (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_pwr'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDA1UUBC">Room U_main_rf (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_rf'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDABVUBC">Room U_main_rtc (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_rtc'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">41</td>
+</tr>
+</table><br><hr><a name="IDAICUBC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=8mil) (Max=251mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.784mil|Location2.X=3081.443mil|Location1.Y=3061.745mil|Location2.Y=3073.722mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.784mil|Location2.X=3081.443mil|Location1.Y=3061.745mil|Location2.Y=3073.722mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-426.654mil,373.307mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3113.091mil|Location2.X=3124.75mil|Location1.Y=3061.745mil|Location2.Y=3073.722mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3113.091mil|Location2.X=3124.75mil|Location1.Y=3061.745mil|Location2.Y=3073.722mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-383.346mil,373.307mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.784mil|Location2.X=3081.443mil|Location1.Y=3018.438mil|Location2.Y=3030.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.784mil|Location2.X=3081.443mil|Location1.Y=3018.438mil|Location2.Y=3030.415mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-426.654mil,330mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3113.091mil|Location2.X=3124.75mil|Location1.Y=3018.438mil|Location2.Y=3030.415mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3113.091mil|Location2.X=3124.75mil|Location1.Y=3018.438mil|Location2.Y=3030.415mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-383.346mil,330mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.784mil|Location2.X=3081.443mil|Location1.Y=2975.131mil|Location2.Y=2987.108mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.784mil|Location2.X=3081.443mil|Location1.Y=2975.131mil|Location2.Y=2987.108mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-426.654mil,286.693mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3113.091mil|Location2.X=3124.75mil|Location1.Y=2975.131mil|Location2.Y=2987.108mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3113.091mil|Location2.X=3124.75mil|Location1.Y=2975.131mil|Location2.Y=2987.108mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-383.346mil,286.693mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.005mil|Location2.X=3331.663mil|Location1.Y=2453.391mil|Location2.Y=2465.368mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.005mil|Location2.X=3331.663mil|Location1.Y=2453.391mil|Location2.Y=2465.368mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-176.433mil,-235.047mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.005mil|Location2.X=3331.663mil|Location1.Y=2540.005mil|Location2.Y=2551.982mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.005mil|Location2.X=3331.663mil|Location1.Y=2540.005mil|Location2.Y=2551.982mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-176.433mil,-148.433mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.005mil|Location2.X=3331.663mil|Location1.Y=2626.619mil|Location2.Y=2638.596mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3320.005mil|Location2.X=3331.663mil|Location1.Y=2626.619mil|Location2.Y=2638.596mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-176.433mil,-61.819mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.312mil|Location2.X=3374.97mil|Location1.Y=2496.698mil|Location2.Y=2508.675mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.312mil|Location2.X=3374.97mil|Location1.Y=2496.698mil|Location2.Y=2508.675mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-133.126mil,-191.74mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.312mil|Location2.X=3374.97mil|Location1.Y=2583.312mil|Location2.Y=2595.289mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.312mil|Location2.X=3374.97mil|Location1.Y=2583.312mil|Location2.Y=2595.289mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-133.126mil,-105.126mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.312mil|Location2.X=3374.97mil|Location1.Y=2669.926mil|Location2.Y=2681.903mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3363.312mil|Location2.X=3374.97mil|Location1.Y=2669.926mil|Location2.Y=2681.903mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-133.126mil,-18.512mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.619mil|Location2.X=3418.278mil|Location1.Y=2453.391mil|Location2.Y=2465.368mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.619mil|Location2.X=3418.278mil|Location1.Y=2453.391mil|Location2.Y=2465.368mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-89.819mil,-235.047mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.619mil|Location2.X=3418.278mil|Location1.Y=2540.005mil|Location2.Y=2551.982mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.619mil|Location2.X=3418.278mil|Location1.Y=2540.005mil|Location2.Y=2551.982mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-89.819mil,-148.433mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.619mil|Location2.X=3418.278mil|Location1.Y=2626.619mil|Location2.Y=2638.596mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.619mil|Location2.X=3418.278mil|Location1.Y=2626.619mil|Location2.Y=2638.596mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-89.819mil,-61.819mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.926mil|Location2.X=3461.585mil|Location1.Y=2496.698mil|Location2.Y=2508.675mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.926mil|Location2.X=3461.585mil|Location1.Y=2496.698mil|Location2.Y=2508.675mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-46.512mil,-191.74mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.926mil|Location2.X=3461.585mil|Location1.Y=2583.312mil|Location2.Y=2595.289mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.926mil|Location2.X=3461.585mil|Location1.Y=2583.312mil|Location2.Y=2595.289mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-46.512mil,-105.126mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.926mil|Location2.X=3461.585mil|Location1.Y=2669.926mil|Location2.Y=2681.903mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3449.926mil|Location2.X=3461.585mil|Location1.Y=2669.926mil|Location2.Y=2681.903mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-46.512mil,-18.512mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.233mil|Location2.X=3504.892mil|Location1.Y=2453.391mil|Location2.Y=2465.368mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.233mil|Location2.X=3504.892mil|Location1.Y=2453.391mil|Location2.Y=2465.368mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-3.205mil,-235.047mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.233mil|Location2.X=3504.892mil|Location1.Y=2540.005mil|Location2.Y=2551.982mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.233mil|Location2.X=3504.892mil|Location1.Y=2540.005mil|Location2.Y=2551.982mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-3.205mil,-148.433mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.233mil|Location2.X=3504.892mil|Location1.Y=2626.619mil|Location2.Y=2638.596mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3493.233mil|Location2.X=3504.892mil|Location1.Y=2626.619mil|Location2.Y=2638.596mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-3.205mil,-61.819mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3536.54mil|Location2.X=3548.199mil|Location1.Y=2496.698mil|Location2.Y=2508.675mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3536.54mil|Location2.X=3548.199mil|Location1.Y=2496.698mil|Location2.Y=2508.675mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (40.102mil,-191.74mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3536.54mil|Location2.X=3548.199mil|Location1.Y=2583.312mil|Location2.Y=2595.289mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3536.54mil|Location2.X=3548.199mil|Location1.Y=2583.312mil|Location2.Y=2595.289mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (40.102mil,-105.126mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3536.54mil|Location2.X=3548.199mil|Location1.Y=2669.926mil|Location2.Y=2681.903mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3536.54mil|Location2.X=3548.199mil|Location1.Y=2669.926mil|Location2.Y=2681.903mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (40.102mil,-18.512mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3959.887mil|Location2.X=3971.545mil|Location1.Y=2556.659mil|Location2.Y=2568.635mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3959.887mil|Location2.X=3971.545mil|Location1.Y=2556.659mil|Location2.Y=2568.635mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (463.449mil,-131.78mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3959.887mil|Location2.X=3971.545mil|Location1.Y=2513.352mil|Location2.Y=2525.328mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3959.887mil|Location2.X=3971.545mil|Location1.Y=2513.352mil|Location2.Y=2525.328mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (463.449mil,-175.087mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3959.887mil|Location2.X=3971.545mil|Location1.Y=2470.044mil|Location2.Y=2482.021mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3959.887mil|Location2.X=3971.545mil|Location1.Y=2470.044mil|Location2.Y=2482.021mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (463.449mil,-218.394mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3916.58mil|Location2.X=3928.238mil|Location1.Y=2556.659mil|Location2.Y=2568.635mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3916.58mil|Location2.X=3928.238mil|Location1.Y=2556.659mil|Location2.Y=2568.635mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (420.142mil,-131.78mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3916.58mil|Location2.X=3928.238mil|Location1.Y=2470.044mil|Location2.Y=2482.021mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3916.58mil|Location2.X=3928.238mil|Location1.Y=2470.044mil|Location2.Y=2482.021mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (420.142mil,-218.394mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3873.273mil|Location2.X=3884.931mil|Location1.Y=2556.659mil|Location2.Y=2568.635mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3873.273mil|Location2.X=3884.931mil|Location1.Y=2556.659mil|Location2.Y=2568.635mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (376.835mil,-131.78mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3873.273mil|Location2.X=3884.931mil|Location1.Y=2513.352mil|Location2.Y=2525.328mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3873.273mil|Location2.X=3884.931mil|Location1.Y=2513.352mil|Location2.Y=2525.328mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (376.835mil,-175.087mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3873.273mil|Location2.X=3884.931mil|Location1.Y=2470.044mil|Location2.Y=2482.021mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3873.273mil|Location2.X=3884.931mil|Location1.Y=2470.044mil|Location2.Y=2482.021mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (376.835mil,-218.394mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3195.492mil|Location2.X=3207.15mil|Location1.Y=2074.944mil|Location2.Y=2086.921mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3195.492mil|Location2.X=3207.15mil|Location1.Y=2074.944mil|Location2.Y=2086.921mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-300.946mil,-613.494mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3242.666mil|Location2.X=3254.324mil|Location1.Y=2147.585mil|Location2.Y=2159.562mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3242.666mil|Location2.X=3254.324mil|Location1.Y=2147.585mil|Location2.Y=2159.562mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-253.773mil,-540.853mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3182.758mil|Location2.X=3194.417mil|Location1.Y=2134.851mil|Location2.Y=2146.828mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3182.758mil|Location2.X=3194.417mil|Location1.Y=2134.851mil|Location2.Y=2146.828mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-313.68mil,-553.587mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3122.851mil|Location2.X=3134.51mil|Location1.Y=2122.118mil|Location2.Y=2134.095mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3122.851mil|Location2.X=3134.51mil|Location1.Y=2122.118mil|Location2.Y=2134.095mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-373.587mil,-566.32mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3170.025mil|Location2.X=3181.683mil|Location1.Y=2194.758mil|Location2.Y=2206.735mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3170.025mil|Location2.X=3181.683mil|Location1.Y=2194.758mil|Location2.Y=2206.735mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-326.413mil,-493.68mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.211mil|Location2.X=3061.869mil|Location1.Y=2169.291mil|Location2.Y=2181.268mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050.211mil|Location2.X=3061.869mil|Location1.Y=2169.291mil|Location2.Y=2181.268mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-446.228mil,-519.147mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3097.384mil|Location2.X=3109.042mil|Location1.Y=2241.932mil|Location2.Y=2253.909mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3097.384mil|Location2.X=3109.042mil|Location1.Y=2241.932mil|Location2.Y=2253.909mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-399.054mil,-446.506mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3110.118mil|Location2.X=3121.776mil|Location1.Y=2182.025mil|Location2.Y=2194.002mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3110.118mil|Location2.X=3121.776mil|Location1.Y=2182.025mil|Location2.Y=2194.002mil|Absolute=True">Hole Size Constraint (7.874mil &lt; 8mil) : Via (-386.32mil,-506.413mil) Top Layer to Bottom Layer</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br><a name="IDALTUBC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk primitive without silk layer</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3395.075mil|Location2.X=3635.255mil|Location1.Y=3384.162mil|Location2.Y=3596.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3395.075mil|Location2.X=3635.255mil|Location1.Y=3384.162mil|Location2.Y=3596.011mil|Absolute=True">Silk To Board Region Clearance (Out of silkscreen region) : Track (-155.512mil,797.087mil)(155.512mil,797.087mil)  Bottom Overlay</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>

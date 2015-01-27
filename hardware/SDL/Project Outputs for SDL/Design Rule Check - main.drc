@@ -1,0 +1,118 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\samkuo\Dropbox\Altium_YeSheng\SDL\layout\main.PcbDoc
+Date     : 9/2/2014
+Time     : 9:57:06 AM
+
+Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=6mil) (Max=100mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=10mil) (Conductor Width=8mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=6mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=8mil) (Max=251mil) (All)
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-426.654mil,373.307mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-383.346mil,373.307mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-426.654mil,330mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-383.346mil,330mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-426.654mil,286.693mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-383.346mil,286.693mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-176.433mil,-235.047mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-176.433mil,-148.433mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-176.433mil,-61.819mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-133.126mil,-191.74mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-133.126mil,-105.126mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-133.126mil,-18.512mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-89.819mil,-235.047mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-89.819mil,-148.433mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-89.819mil,-61.819mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-46.512mil,-191.74mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-46.512mil,-105.126mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-46.512mil,-18.512mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-3.205mil,-235.047mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-3.205mil,-148.433mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-3.205mil,-61.819mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (40.102mil,-191.74mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (40.102mil,-105.126mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (40.102mil,-18.512mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (463.449mil,-131.78mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (463.449mil,-175.087mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (463.449mil,-218.394mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (420.142mil,-131.78mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (420.142mil,-218.394mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (376.835mil,-131.78mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (376.835mil,-175.087mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (376.835mil,-218.394mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-300.946mil,-613.494mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-253.773mil,-540.853mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-313.68mil,-553.587mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-373.587mil,-566.32mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-326.413mil,-493.68mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-446.228mil,-519.147mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-399.054mil,-446.506mil) Top Layer to Bottom Layer
+   Violation between Hole Size Constraint (7.874mil < 8mil) : Via (-386.32mil,-506.413mil) Top Layer to Bottom Layer
+Rule Violations :40
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=10mil) (Disabled)(IsPad),(All)
+Rule Violations :0
+
+Processing Rule : Silk to Silk (Clearance=10mil) (Disabled)(All),(All)
+Rule Violations :0
+
+Processing Rule : Silk primitive without silk layer
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Track (-155.512mil,797.087mil)(155.512mil,797.087mil)  Bottom Overlay
+Rule Violations :1
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Room U_main_connector (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_connector'))
+Rule Violations :0
+
+Processing Rule : Room U_main_ftdi (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_ftdi'))
+Rule Violations :0
+
+Processing Rule : Room U_main_IO (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_IO'))
+Rule Violations :0
+
+Processing Rule : Room U_main_mem (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_mem'))
+Rule Violations :0
+
+Processing Rule : Room U_main_pwr (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_pwr'))
+Rule Violations :0
+
+Processing Rule : Room U_main_rf (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_rf'))
+Rule Violations :0
+
+Processing Rule : Room U_main_rtc (Bounding Region = (0mil, 0mil, 2000mil, 1000mil) (Disabled)(InComponentClass('U_main_rtc'))
+Rule Violations :0
+
+
+Violations Detected : 41
+Time Elapsed        : 00:00:02

@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=LED_DRIVE Pin=J3-1
+Removed Pin From Net: NetName=GND Pin=J3-2
+Added Pin To Net: NetName=VCC3.3 Pin=J3-1
+Added Pin To Net: NetName=LED_DRIVE Pin=J3-2

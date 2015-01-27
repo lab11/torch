@@ -1,0 +1,115 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\Ye-sheng\Dropbox\Altium_YeSheng\SDL_main_adapter\pcb\sdl_adapter.PcbDoc
+Date     : 10/3/2014
+Time     : 12:30:53 AM
+
+Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=6mil) (Max=100mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=10mil) (Conductor Width=8mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=7mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=16mil) (Max=251mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk To Solder Mask (Clearance=10mil) (IsPad),(All)
+   Violation between Track (-765.551mil,-188.976mil)(-765.551mil,188.976mil)  Top Overlay and 
+                     Pad J1-1(-714.961mil,100mil)  Top Layer
+   Violation between Track (-584.449mil,-188.976mil)(-584.449mil,188.976mil)  Top Overlay and 
+                     Pad J1-2(-635.039mil,50mil)  Top Layer
+   Violation between Track (-765.551mil,-188.976mil)(-765.551mil,188.976mil)  Top Overlay and 
+                     Pad J1-3(-714.961mil,0mil)  Top Layer
+   Violation between Track (-584.449mil,-188.976mil)(-584.449mil,188.976mil)  Top Overlay and 
+                     Pad J1-4(-635.039mil,-50mil)  Top Layer
+   Violation between Track (-765.551mil,-188.976mil)(-765.551mil,188.976mil)  Top Overlay and 
+                     Pad J1-5(-714.961mil,-100mil)  Top Layer
+   Violation between Track (584.449mil,-188.976mil)(584.449mil,188.976mil)  Top Overlay and 
+                     Pad J2-1(635.039mil,100mil)  Top Layer
+   Violation between Track (765.551mil,-188.976mil)(765.551mil,188.976mil)  Top Overlay and 
+                     Pad J2-2(714.961mil,50mil)  Top Layer
+   Violation between Track (584.449mil,-188.976mil)(584.449mil,188.976mil)  Top Overlay and 
+                     Pad J2-3(635.039mil,0mil)  Top Layer
+   Violation between Track (765.551mil,-188.976mil)(765.551mil,188.976mil)  Top Overlay and 
+                     Pad J2-4(714.961mil,-50mil)  Top Layer
+   Violation between Track (584.449mil,-188.976mil)(584.449mil,188.976mil)  Top Overlay and 
+                     Pad J2-5(635.039mil,-100mil)  Top Layer
+   Violation between Track (-584.449mil,-188.976mil)(-584.449mil,188.976mil)  Bottom Overlay and 
+                     Pad J3-1(-635.039mil,100mil)  Bottom Layer
+   Violation between Track (-765.551mil,-188.976mil)(-765.551mil,188.976mil)  Bottom Overlay and 
+                     Pad J3-2(-714.961mil,50mil)  Bottom Layer
+   Violation between Track (-584.449mil,-188.976mil)(-584.449mil,188.976mil)  Bottom Overlay and 
+                     Pad J3-3(-635.039mil,0mil)  Bottom Layer
+   Violation between Track (-765.551mil,-188.976mil)(-765.551mil,188.976mil)  Bottom Overlay and 
+                     Pad J3-4(-714.961mil,-50mil)  Bottom Layer
+   Violation between Track (-584.449mil,-188.976mil)(-584.449mil,188.976mil)  Bottom Overlay and 
+                     Pad J3-5(-635.039mil,-100mil)  Bottom Layer
+   Violation between Track (584.449mil,-188.976mil)(584.449mil,188.976mil)  Bottom Overlay and 
+                     Pad J4-1(635.039mil,-100mil)  Bottom Layer
+   Violation between Track (765.551mil,-188.976mil)(765.551mil,188.976mil)  Bottom Overlay and 
+                     Pad J4-2(714.961mil,-50mil)  Bottom Layer
+   Violation between Track (584.449mil,-188.976mil)(584.449mil,188.976mil)  Bottom Overlay and 
+                     Pad J4-3(635.039mil,0mil)  Bottom Layer
+   Violation between Track (765.551mil,-188.976mil)(765.551mil,188.976mil)  Bottom Overlay and 
+                     Pad J4-4(714.961mil,50mil)  Bottom Layer
+   Violation between Track (584.449mil,-188.976mil)(584.449mil,188.976mil)  Bottom Overlay and 
+                     Pad J4-5(635.039mil,100mil)  Bottom Layer
+Rule Violations :20
+
+Processing Rule : Silk to Silk (Clearance=10mil) (All),(All)
+   Violation between Text "VCC3.3" (260mil,-230mil)  Top Overlay and 
+                     Track (584.449mil,-188.976mil)(765.551mil,-188.976mil)  Top Overlay
+   Violation between Text "VCC3.3" (260mil,-230mil)  Top Overlay and 
+                     Track (584.449mil,-188.976mil)(584.449mil,188.976mil)  Top Overlay
+   Violation between Text "VCC3.3" (585mil,175mil)  Bottom Overlay and 
+                     Track (584.449mil,188.976mil)(765.551mil,188.976mil)  Bottom Overlay
+   Violation between Text "VCC3.3" (585mil,175mil)  Bottom Overlay and 
+                     Track (584.449mil,-188.976mil)(584.449mil,188.976mil)  Bottom Overlay
+Rule Violations :4
+
+Processing Rule : Silk primitive without silk layer
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "Samtec connector" (-758.5mil,-280.5mil)  Top Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "Samtec connector" (591.5mil,-280.5mil)  Top Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "2 x 5 header SMD" (-163.5mil,-339.5mil)  Top Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "P2" (-164mil,280mil)  Top Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "Samtec connector" (-591.5mil,-280.5mil)  Bottom Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "Samtec connector" (758.5mil,-280.5mil)  Bottom Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "2 x 5 header SMD" (163.5mil,-339.5mil)  Bottom Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "P1" (164mil,280mil)  Bottom Overlay
+Rule Violations :8
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Room sdl_adapter (Bounding Region = (1297.039mil, 1290mil, 2852.961mil, 1810mil) (InComponentClass('sdl_adapter'))
+Rule Violations :0
+
+
+Violations Detected : 32
+Time Elapsed        : 00:00:00

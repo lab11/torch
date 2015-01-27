@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=GND Pin=C3-1
+Removed Pin From Net: NetName=VCC5 Pin=C3-2
+Removed Pin From Net: NetName=GND Pin=C4-1
+Removed Pin From Net: NetName=VCC5 Pin=U2-1
+Removed Pin From Net: NetName=GND Pin=U2-2
+Removed Pin From Net: NetName=VCC5 Pin=U2-3
+Removed Member From Class: ClassName=cree_module Member=C3
+Removed Member From Class: ClassName=cree_module Member=C4
+Removed Member From Class: ClassName=cree_module Member=U2
+Added Pin To Net: NetName=VCC5 Pin=R2-2

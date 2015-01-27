@@ -1,0 +1,15 @@
+Added Component: Designator=C6(0805)
+Added Component: Designator=C7(0603)
+Added Component: Designator=U3(PowerDI-5)
+Added Pin To Net: NetName=VIN Pin=C6-1
+Added Pin To Net: NetName=GND Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=GND Pin=U3-1
+Added Pin To Net: NetName=VIN Pin=U3-3
+Added Pin To Net: NetName=VCC12 Pin=C7-1
+Added Pin To Net: NetName=VCC12 Pin=U3-2
+Added Net: Name=VCC12
+Added Member To Class: ClassName=led_frontend Member=Component C6 Ceramic capacitor
+Added Member To Class: ClassName=led_frontend Member=Component C7 Ceramic capacitor
+Added Member To Class: ClassName=led_frontend Member=Component U3 ZXTR2012P5
+Added Room: Name=led_frontend

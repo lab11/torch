@@ -1,0 +1,18 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: cree.PcbDoc   5/7/2014  11:31:57 AM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : cree.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        31.5mil (0.8001mm)       Round          3                0.16 Inch (4.00 mm)
+T2        35.4mil (0.89916mm)      Round          10               2.17 Inch (55.04 mm)
+T3        47.2mil (1.19888mm)      Round          4                0.83 Inch (21.08 mm)
+T4        55.1mil (1.39954mm)      Round          4                0.83 Inch (21.08 mm)
+T5        63mil (1.6002mm)         Round          3                0.46 Inch (11.58 mm)
+---------------------------------------------------------------------------
+Totals                                            24               4.44 Inch (112.78 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

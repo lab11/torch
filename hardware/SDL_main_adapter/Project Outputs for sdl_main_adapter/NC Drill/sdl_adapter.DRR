@@ -1,0 +1,14 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: sdl_adapter.PcbDoc   10/3/2014  12:34:22 AM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : sdl_adapter.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        20mil (0.508mm)          Round          17               3.39 Inch (86.23 mm)
+---------------------------------------------------------------------------
+Totals                                            17               3.39 Inch (86.23 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

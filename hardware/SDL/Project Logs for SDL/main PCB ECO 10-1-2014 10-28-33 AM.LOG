@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=NetD3_1 Pin=R11-1
+Removed Pin From Net: NetName=VCC3.3_MAIN Pin=R11-2
+Change Component DesignItemId : Designator=R4 Old DesignItemId=R_750_0402 New DesignItemId=R_619_0402
+Change Component DesignItemId : Designator=R11 Old DesignItemId=R_750_0402 New DesignItemId=R_619_0402
+Change Component Description : Designator=R4 Old Description=Chip resistor, 750, 0402 package New Description=Chip resistor, 619, 0402 package
+Change Component Description : Designator=R11 Old Description=Chip resistor, 750, 0402 package New Description=Chip resistor, 619, 0402 package
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=R11-1
+Added Pin To Net: NetName=NetD3_1 Pin=R11-2

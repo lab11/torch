@@ -1,0 +1,9 @@
+Change Component Designator: OldDesignator=B? NewDesignator=B2
+Change Net Name : Old Net Name=NetB?_1 New Net Name=NetB2_1
+Added Room: Name=U_main_connector
+Added Room: Name=U_main_ftdi
+Added Room: Name=U_main_IO
+Added Room: Name=U_main_mem
+Added Room: Name=U_main_pwr
+Added Room: Name=U_main_rf
+Added Room: Name=U_main_rtc

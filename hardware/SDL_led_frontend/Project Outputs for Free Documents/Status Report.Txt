@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 11:38:04 AM On 8/26/2014
+
+Output: Bill of Materials
+Type  : BOM
+From  : Variant [[No Variations]] of Schematic Document [led_frontend.SchDoc]
+   Generated File[Bill of Materials-led_frontend.xlsx]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 11:38:10 AM On 8/26/2014

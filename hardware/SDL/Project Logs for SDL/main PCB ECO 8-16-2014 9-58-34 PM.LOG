@@ -1,0 +1,9 @@
+Added Component: Designator=B?(2450BM15A0002)
+Added Pin To Net: NetName=NetB2_1 Pin=B?-1
+Added Pin To Net: NetName=GND Pin=B?-2
+Added Pin To Net: NetName=CC2538_RF_N Pin=B?-3
+Added Pin To Net: NetName=CC2538_RF_P Pin=B?-4
+Added Pin To Net: NetName=GND Pin=B?-5
+Added Pin To Net: NetName=GND Pin=B?-6
+Change Net Name : Old Net Name=NetB2_1 New Net Name=NetB?_1
+Added Member To Class: ClassName=U_main_rf Member=Component B? 2450BM15A0002E

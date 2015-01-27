@@ -1,0 +1,111 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\samkuo\Dropbox\Altium_YeSheng\cree_module\cree.PcbDoc
+Date     : 5/7/2014
+Time     : 11:15:46 AM
+
+Processing Rule : Clearance Constraint (Gap=6mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=6mil) (Max=100mil) (Preferred=10mil) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=10mil) (Conductor Width=8mil) (Air Gap=10mil) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=7mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=16mil) (Max=251mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=1mil) (Max=100mil) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=10mil) (All),(All)
+   Violation between Pad U1-2(1890mil,1279.213mil)  Top Layer and 
+                     Pad U1-1(1927.402mil,1279.213mil)  Top Layer
+   Violation between Pad U1-3(1852.599mil,1279.213mil)  Top Layer and 
+                     Pad U1-2(1890mil,1279.213mil)  Top Layer
+Rule Violations :2
+
+Processing Rule : Silk To Solder Mask (Clearance=10mil) (IsPad),(All)
+   Violation between Pad U1-1(1927.402mil,1279.213mil)  Top Layer and 
+                     Arc (1954.961mil,1271.339mil)  Top Overlay
+   Violation between Track (1732.126mil,1161.22mil)(1747.874mil,1161.22mil)  Top Overlay and 
+                     Pad R1-1(1710.473mil,1175mil)  Top Layer
+   Violation between Track (1732.126mil,1188.78mil)(1747.874mil,1188.78mil)  Top Overlay and 
+                     Pad R1-1(1710.473mil,1175mil)  Top Layer
+   Violation between Track (1732.126mil,1161.22mil)(1747.874mil,1161.22mil)  Top Overlay and 
+                     Pad R1-2(1769.528mil,1175mil)  Top Layer
+   Violation between Track (1732.126mil,1188.78mil)(1747.874mil,1188.78mil)  Top Overlay and 
+                     Pad R1-2(1769.528mil,1175mil)  Top Layer
+   Violation between Track (1828.976mil,1243.78mil)(1951.024mil,1243.78mil)  Top Overlay and 
+                     Pad U1-1(1927.402mil,1279.213mil)  Top Layer
+   Violation between Track (1828.976mil,1243.78mil)(1951.024mil,1243.78mil)  Top Overlay and 
+                     Pad U1-2(1890mil,1279.213mil)  Top Layer
+   Violation between Track (1828.976mil,1243.78mil)(1951.024mil,1243.78mil)  Top Overlay and 
+                     Pad U1-3(1852.599mil,1279.213mil)  Top Layer
+   Violation between Track (1828.976mil,1216.22mil)(1951.024mil,1216.22mil)  Top Overlay and 
+                     Pad U1-4(1852.599mil,1180.787mil)  Top Layer
+   Violation between Track (1828.976mil,1216.22mil)(1951.024mil,1216.22mil)  Top Overlay and 
+                     Pad U1-5(1927.402mil,1180.787mil)  Top Layer
+   Violation between Track (1887.126mil,1336.22mil)(1902.874mil,1336.22mil)  Top Overlay and 
+                     Pad R2-2(1865.472mil,1350mil)  Top Layer
+   Violation between Track (1887.126mil,1363.78mil)(1902.874mil,1363.78mil)  Top Overlay and 
+                     Pad R2-2(1865.472mil,1350mil)  Top Layer
+   Violation between Track (1887.126mil,1336.22mil)(1902.874mil,1336.22mil)  Top Overlay and 
+                     Pad R2-1(1924.527mil,1350mil)  Top Layer
+   Violation between Track (1887.126mil,1363.78mil)(1902.874mil,1363.78mil)  Top Overlay and 
+                     Pad R2-1(1924.527mil,1350mil)  Top Layer
+   Violation between Track (1058.74mil,1298.78mil)(1480mil,1298.78mil)  Top Overlay and 
+                     Pad J1-3(1480mil,1349.961mil)  Multi-Layer
+   Violation between Track (1480mil,1298.78mil)(1649.291mil,1298.78mil)  Top Overlay and 
+                     Pad J1-3(1480mil,1349.961mil)  Multi-Layer
+   Violation between Track (1649.291mil,1298.78mil)(1649.291mil,1704.291mil)  Top Overlay and 
+                     Pad J1-1(1598.11mil,1535mil)  Multi-Layer
+   Violation between Track (1052.953mil,1025.945mil)(1052.953mil,1244.055mil)  Top Overlay and 
+                     Pad P6-(1075mil,1185mil)  Multi-Layer
+   Violation between Track (1052.953mil,1025.945mil)(1052.953mil,1244.055mil)  Top Overlay and 
+                     Pad P6-(1075mil,1085mil)  Multi-Layer
+   Violation between Track (1052.953mil,1755.945mil)(1052.953mil,1974.055mil)  Top Overlay and 
+                     Pad P7-(1075mil,1915mil)  Multi-Layer
+   Violation between Track (1052.953mil,1755.945mil)(1052.953mil,1974.055mil)  Top Overlay and 
+                     Pad P7-(1075mil,1815mil)  Multi-Layer
+Rule Violations :21
+
+Processing Rule : Silk to Silk (Clearance=10mil) (All),(All)
+Rule Violations :0
+
+Processing Rule : Silk primitive without silk layer
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "P2" (1807.5mil,2057.5mil)  Top Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "1 x 2 header" (1407.5mil,942.5mil)  Top Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "1 x 2 header" (1807.5mil,882.5mil)  Top Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "Screw connector" (1073.5mil,917.5mil)  Top Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "P7" (1057mil,2007mil)  Top Overlay
+   Violation between Silk To Board Region Clearance (Out of silkscreen region) : Text "Si2312CDS" (1516.5mil,974.5mil)  Top Overlay
+Rule Violations :6
+
+Processing Rule : Net Antennae (Tolerance=0mil) (All)
+Rule Violations :0
+
+Processing Rule : Room cree_module (Bounding Region = (1037.441mil, 1012.5mil, 1974.803mil, 1987.5mil) (InComponentClass('cree_module'))
+Rule Violations :0
+
+
+Violations Detected : 29
+Time Elapsed        : 00:00:01

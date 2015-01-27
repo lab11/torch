@@ -1,0 +1,24 @@
+Removed Pin From Net: NetName=VCC5 Pin=C2-2
+Removed Pin From Net: NetName=VCC5 Pin=U1-1
+Change Component DesignItemId : Designator=U1 Old DesignItemId=LM78L05 New DesignItemId=L78L
+Change Component Footprint: Designator=U1 Old Footprint=TO92 New Footprint=SOT89-150P409X160-3N
+Change Component Comment : Designator=U1 Old Comment=LM78L05 New Comment=L78L
+Change Component Designator: OldDesignator=J? NewDesignator=J1
+Added Component: Designator=C3(1608[0603])
+Added Component: Designator=C4(1608[0603])
+Added Component: Designator=U2(SOT23-5)
+Added Pin To Net: NetName=GND Pin=C3-1
+Added Pin To Net: NetName=GND Pin=C4-1
+Added Pin To Net: NetName=VCC5 Pin=C4-2
+Added Pin To Net: NetName=GND Pin=U2-2
+Added Pin To Net: NetName=VCC5 Pin=U2-5
+Change Net Name : Old Net Name=NetJ?_- New Net Name=NetJ1_-
+Added Pin To Net: NetName=VCC12 Pin=C2-2
+Added Pin To Net: NetName=VCC12 Pin=C3-2
+Added Pin To Net: NetName=VCC12 Pin=U1-1
+Added Pin To Net: NetName=VCC12 Pin=U2-1
+Added Pin To Net: NetName=VCC12 Pin=U2-3
+Added Net: Name=VCC12
+Added Member To Class: ClassName=cree_module Member=Component C3 Cap Semi
+Added Member To Class: ClassName=cree_module Member=Component C4 Cap Semi
+Added Member To Class: ClassName=cree_module Member=Component U2 LP2980

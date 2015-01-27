@@ -1,0 +1,19 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of PCB Document [sdl_adapter.PcbDoc]
+   Generated File[sdl_adapter.GTL]
+   Generated File[sdl_adapter.GBL]
+   Generated File[sdl_adapter.GTO]
+   Generated File[sdl_adapter.GTS]
+   Generated File[sdl_adapter.GBS]
+   Generated File[sdl_adapter.GBO]
+   Generated File[sdl_adapter.GKO]
+   Generated File[sdl_adapter.RUL]
+   Generated File[sdl_adapter.EXTREP]
+   Generated File[sdl_adapter.REP]
+
+
+Files Generated   : 10
+Documents Printed : 0
+
+Finished Output Generation At 12:34:24 AM On 10/3/2014

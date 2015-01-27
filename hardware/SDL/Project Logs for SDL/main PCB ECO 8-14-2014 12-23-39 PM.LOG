@@ -1,0 +1,13 @@
+Added Component: Designator=J5(PJ-102AH)
+Added Component: Designator=P1(1x2 header)
+Added Component: Designator=R1(2512)
+Added Pin To Net: NetName=VIN Pin=J5-1
+Added Pin To Net: NetName=GND Pin=J5-2
+Added Pin To Net: NetName=VCC3.3 Pin=P1-1
+Added Pin To Net: NetName=GND Pin=R1-2
+Added Pin To Net: NetName=NetP1_2 Pin=P1-2
+Added Pin To Net: NetName=NetP1_2 Pin=R1-1
+Added Net: Name=NetP1_2
+Added Member To Class: ClassName=main_pwr Member=Component J5 PJ-102AH
+Added Member To Class: ClassName=main_pwr Member=Component P1 1 x 2 header
+Added Member To Class: ClassName=main_pwr Member=Component R1 R_10_2512

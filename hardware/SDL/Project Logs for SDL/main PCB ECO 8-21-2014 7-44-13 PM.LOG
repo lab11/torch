@@ -1,0 +1,15 @@
+Change Component Library : Designator=J1 Old Library=sdl.SchLib New Library=connectors.SchLib
+Change Component Library : Designator=J2 Old Library=sdl.SchLib New Library=connectors.SchLib
+Change Component Library : Designator=J3 Old Library=sdl.SchLib New Library=connectors.SchLib
+Change Component Library : Designator=J4 Old Library=sdl.SchLib New Library=connectors.SchLib
+Change Component Library : Designator=J5 Old Library=sdl.SchLib New Library=connectors.SchLib
+Change Component Library : Designator=P1 Old Library=sdl.SchLib New Library=connectors.SchLib
+Change Component Library : Designator=P2 Old Library=sdl.SchLib New Library=connectors.SchLib
+Change Component Library : Designator=Y1 Old Library=sdl.SchLib New Library=crystal_oscillators_rtc.SchLib
+Change Component Library : Designator=Y2 Old Library=sdl.SchLib New Library=crystal_oscillators_rtc.SchLib
+Change Component Library : Designator=Y3 Old Library=sdl.SchLib New Library=crystal_oscillators_rtc.SchLib
+Change Component Library : Designator=Y4 Old Library=sdl.SchLib New Library=crystal_oscillators_rtc.SchLib
+Change Component Library : Designator=ANT1 Old Library=sdl.SchLib New Library=RF.SchLib
+Change Component Library : Designator=B1 Old Library=sdl.SchLib New Library=RF.SchLib
+Change Component Library : Designator=U5 Old Library=sdl.SchLib New Library=RF.SchLib
+Change Component Library : Designator=U7 Old Library=sdl.SchLib New Library=RF.SchLib
