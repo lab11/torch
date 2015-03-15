@@ -1,0 +1,5 @@
+Change Component Description : Designator=J1 Old Description=LED Array Holders  for CREE* XLamp?   Arrays New Description=LED Array Holders  for CREE* XLamp?   Arrays
+Added Component: Designator=FB1(0603)
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=FB1-1
+Added Pin To Net: NetName=VCC3.3 Pin=FB1-2
+Added Member To Class: ClassName=led_frontend Member=Component FB1 Ferrite Bead

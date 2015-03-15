@@ -1,0 +1,8 @@
+Change Component Description : Designator=J1 Old Description=LED Array Holders  for CREE* XLamp?   Arrays New Description=LED Array Holders  for CREE* XLamp?   Arrays
+Added Component: Designator=P3(2x2 header SMD)
+Added Pin To Net: NetName=LED_DRIVE Pin=P3-1
+Added Pin To Net: NetName=GND Pin=P3-2
+Added Pin To Net: NetName=LED_DRIVE Pin=P3-3
+Added Pin To Net: NetName=GND Pin=P3-4
+Added Member To Class: ClassName=led_frontend Member=Component P3 2 x 2 header SMD
+Added Room: Name=led_frontend

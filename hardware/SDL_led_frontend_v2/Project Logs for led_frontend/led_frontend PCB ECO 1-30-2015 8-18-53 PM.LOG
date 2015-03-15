@@ -1,0 +1,5 @@
+Added Component: Designator=J2(PJ-102AH)
+Added Pin To Net: NetName=VIN Pin=J2-1
+Added Pin To Net: NetName=GND Pin=J2-2
+Added Pin To Net: NetName=GND Pin=J2-3
+Added Member To Class: ClassName=led_frontend Member=Component J2 PJ-102AH

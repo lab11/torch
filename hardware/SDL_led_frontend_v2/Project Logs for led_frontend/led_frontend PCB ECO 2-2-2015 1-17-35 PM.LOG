@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=GND Pin=P1-1
+Removed Pin From Net: NetName=GND Pin=P1-2
+Removed Pin From Net: NetName=VCC3.3_MAIN Pin=P1-3
+Removed Pin From Net: NetName=VCC3.3_MAIN Pin=P1-4
+Change Component Description : Designator=J1 Old Description=LED Array Holders  for CREE* XLamp?   Arrays New Description=LED Array Holders  for CREE* XLamp?   Arrays
+Added Pin To Net: NetName=VIN Pin=P1-1
+Added Pin To Net: NetName=VIN Pin=P1-2
+Added Pin To Net: NetName=GND Pin=P1-3
+Added Pin To Net: NetName=GND Pin=P1-4

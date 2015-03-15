@@ -1,0 +1,100 @@
+Added Component: Designator=C?(C1206)
+Added Component: Designator=C?(0603)
+Added Component: Designator=C?(0402)
+Added Component: Designator=C?(0402)
+Added Component: Designator=C?(2917)
+Added Component: Designator=C?(1210)
+Added Component: Designator=C?(2220)
+Added Component: Designator=C?(0603)
+Added Component: Designator=C?(0805)
+Added Component: Designator=C?(0603)
+Added Component: Designator=FB?(0402)
+Added Component: Designator=J?(molex)
+Added Component: Designator=L?(SLF10145)
+Added Component: Designator=P?(HW-04-20-F-D-900-SM)
+Added Component: Designator=P?(HW-04-20-F-D-900-SM)
+Added Component: Designator=Q?(SOT23-3)
+Added Component: Designator=Q?(SOT23-3)
+Added Component: Designator=Q?(SOT23-3)
+Added Component: Designator=Q?(SOT23-3)
+Added Component: Designator=R?(0603)
+Added Component: Designator=R?(1210)
+Added Component: Designator=U?(SOIC-8)
+Added Component: Designator=U?(MSE16(12))
+Added Component: Designator=U?(SC-70-5 (DCK))
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=GND Pin=C?-2
+Added Pin To Net: NetName=GND Pin=P?-1
+Added Pin To Net: NetName=GND Pin=P?-1
+Added Pin To Net: NetName=GND Pin=P?-2
+Added Pin To Net: NetName=GND Pin=P?-2
+Added Pin To Net: NetName=GND Pin=P?-7
+Added Pin To Net: NetName=GND Pin=P?-7
+Added Pin To Net: NetName=GND Pin=P?-8
+Added Pin To Net: NetName=GND Pin=P?-8
+Added Pin To Net: NetName=GND Pin=Q?-2
+Added Pin To Net: NetName=GND Pin=Q?-2
+Added Pin To Net: NetName=GND Pin=R?-2
+Added Pin To Net: NetName=GND Pin=U?-2
+Added Pin To Net: NetName=GND Pin=U?-3
+Added Pin To Net: NetName=GND Pin=U?-3
+Added Pin To Net: NetName=GND Pin=U?-6
+Added Pin To Net: NetName=GND Pin=U?-7
+Added Pin To Net: NetName=GND Pin=U?-7
+Added Pin To Net: NetName=GND Pin=U?-8
+Added Pin To Net: NetName=GND Pin=U?-14
+Added Pin To Net: NetName=GND Pin=U?-16
+Added Pin To Net: NetName=GND Pin=U?-17
+Added Net: Name=GND
+Added Pin To Net: NetName=LED_DRIVE Pin=P?-3
+Added Pin To Net: NetName=LED_DRIVE Pin=U?-2
+Added Net: Name=LED_DRIVE
+Added Pin To Net: NetName=NetC?_1 Pin=C?-1
+Added Pin To Net: NetName=NetC?_1 Pin=U?-8
+Added Net: Name=NetC?_1
+Added Pin To Net: NetName=NetJ?_- Pin=J?--
+Added Pin To Net: NetName=NetJ?_- Pin=Q?-3
+Added Net: Name=NetJ?_-
+Added Pin To Net: NetName=NetL?_2 Pin=L?-2
+Added Pin To Net: NetName=NetL?_2 Pin=U?-1
+Added Net: Name=NetL?_2
+Added Pin To Net: NetName=NetQ?_1 Pin=Q?-1
+Added Pin To Net: NetName=NetQ?_1 Pin=Q?-2
+Added Pin To Net: NetName=NetQ?_1 Pin=R?-1
+Added Net: Name=NetQ?_1
+Added Pin To Net: NetName=NetQ?_3 Pin=Q?-3
+Added Pin To Net: NetName=NetQ?_3 Pin=R?-1
+Added Net: Name=NetQ?_3
+Added Pin To Net: NetName=NetU?_6 Pin=U?-6
+Added Pin To Net: NetName=NetU?_6 Pin=U?-10
+Added Net: Name=NetU?_6
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=C?-1
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=C?-1
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=C?-1
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=C?-1
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=FB?-1
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=P?-3
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=P?-4
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=P?-5
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=P?-6
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=Q?-2
+Added Pin To Net: NetName=VCC3.3_MAIN Pin=U?-5
+Added Net: Name=VCC3.3_MAIN
+Added Pin To Net: NetName=VCC3.3 Pin=C?-1
+Added Pin To Net: NetName=VCC3.3 Pin=C?-1
+Added Pin To Net: NetName=VCC3.3 Pin=FB?-2
+Added Pin To Net: NetName=VCC3.3 Pin=L?-1
+Added Pin To Net: NetName=VCC3.3 Pin=U?-9
+Added Net: Name=VCC3.3
+Added Pin To Net: NetName=VIN Pin=C?-1
+Added Pin To Net: NetName=VIN Pin=J?-+
+Added Pin To Net: NetName=VIN Pin=U?-3
+Added Net: Name=VIN
+Added Class: Name=led_frontend
+Added Room: Name=led_frontend
