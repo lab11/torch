@@ -77,7 +77,7 @@
 #undef LEDS_RED
 #undef LEDS_CONF_ALL
 
-#define LEDS_BLUE                32 /**< PC5 */
+#define LEDS_BLUE                4  /**< PC2 */
 #define LEDS_RED                 2  /**< PC1 */
 #define LEDS_GREEN               1  /**< PC0 */
 #define LEDS_CONF_ALL            35
@@ -88,9 +88,16 @@
 #define LED_BLUE_BASE            GPIO_C_BASE
 #define LED_RED_BASE             GPIO_C_BASE
 #define LED_GREEN_BASE           GPIO_C_BASE
-#define LED_BLUE_MASK            GPIO_PIN_MASK(5)
+#define LED_BLUE_MASK            GPIO_PIN_MASK(2)
 #define LED_RED_MASK             GPIO_PIN_MASK(1)
 #define LED_GREEN_MASK           GPIO_PIN_MASK(0)
+/** @} */
+/*---------------------------------------------------------------------------*/
+/** \name RF Switch
+ *
+ */
+#define RF_SWITCH_PORT_NUM      GPIO_B_NUM
+#define RF_SWITCH_PIN           5
 /** @} */
 /*---------------------------------------------------------------------------*/
 /** \name USB configuration
@@ -125,20 +132,6 @@
 
 //#define UART1_RTS_PORT           GPIO_C_NUM
 //#define UART1_RTS_PIN            2
-/** @} */
-/*---------------------------------------------------------------------------*/
-/**
- * \name FM25L04B configuration
- *
- * These values configure which CC2538 pins to use for the FRAM chip.
- * @{
- */
-#define FM25L04B_HOLD_N_PORT_NUM GPIO_D_NUM
-#define FM25L04B_HOLD_N_PIN      0
-#define FM25L04B_WP_N_PORT_NUM   GPIO_D_NUM
-#define FM25L04B_WP_N_PIN        2
-#define FM25L04B_CS_N_PORT_NUM   GPIO_D_NUM
-#define FM25L04B_CS_N_PIN        1
 /** @} */
 /*---------------------------------------------------------------------------*/
 /**
