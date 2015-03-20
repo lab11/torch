@@ -1,5 +1,5 @@
-#ifndef __RFSWITCH.H__
-#define __RFSWITCH.H__
+#ifndef RFSWITCH_H_
+#define RFSWITCH_H_
 
 typedef enum {
 	RFSWITCH_NRF51822,

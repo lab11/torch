@@ -80,7 +80,7 @@
 #define LEDS_BLUE                4  /**< PC2 */
 #define LEDS_RED                 2  /**< PC1 */
 #define LEDS_GREEN               1  /**< PC0 */
-#define LEDS_CONF_ALL            35
+#define LEDS_CONF_ALL            7
 
 /* Notify various examples that we have LEDs */
 #define PLATFORM_HAS_LEDS        1
@@ -98,6 +98,13 @@
  */
 #define RF_SWITCH_PORT_NUM      GPIO_B_NUM
 #define RF_SWITCH_PIN           5
+/** @} */
+/*---------------------------------------------------------------------------*/
+/** \name LED PWM
+ *
+ */
+#define LED_PWM_PORT_NUM      GPIO_D_NUM
+#define LED_PWM_PIN           0
 /** @} */
 /*---------------------------------------------------------------------------*/
 /** \name USB configuration
