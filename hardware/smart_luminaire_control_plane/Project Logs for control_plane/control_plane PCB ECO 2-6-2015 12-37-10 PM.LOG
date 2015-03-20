@@ -1,0 +1,28 @@
+Change Component Description : Designator=U4 Old Description=Multiprotocol BluetoothR low energy/2.4 GHz RF System on Chip New Description=Multiprotocol BluetoothR low energy/2.4 GHz RF System on Chip
+Added Component: Designator=C26(0402)
+Added Component: Designator=R2(0402)
+Added Component: Designator=R4(0402)
+Added Component: Designator=R5(0402)
+Added Component: Designator=R6(0402)
+Added Pin To Net: NetName=VCC_USB_5 Pin=C26-1
+Added Pin To Net: NetName=GND Pin=C26-2
+Added Pin To Net: NetName=USB_FTDI_N Pin=R2-1
+Added Pin To Net: NetName=USB_N Pin=R2-2
+Added Pin To Net: NetName=USB_FTDI_P Pin=R4-1
+Added Pin To Net: NetName=USB_P Pin=R4-2
+Added Pin To Net: NetName=USB_N Pin=R5-1
+Added Pin To Net: NetName=USB_MCU_N Pin=R5-2
+Added Pin To Net: NetName=USB_P Pin=R6-1
+Added Pin To Net: NetName=USB_MCU_P Pin=R6-2
+Added Member To Class: ClassName=U_usb Member=Component C26 Ceramic capacitor
+Added Member To Class: ClassName=U_usb Member=Component R2 Chip resistor
+Added Member To Class: ClassName=U_usb Member=Component R4 Chip resistor
+Added Member To Class: ClassName=U_usb Member=Component R5 Chip resistor
+Added Member To Class: ClassName=U_usb Member=Component R6 Chip resistor
+Added Room: Name=U_connector
+Added Room: Name=U_digital_IO
+Added Room: Name=U_flash
+Added Room: Name=U_power
+Added Room: Name=U_rf
+Added Room: Name=U_rtc
+Added Room: Name=U_usb

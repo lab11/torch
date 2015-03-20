@@ -1,0 +1,3 @@
+Change Component DesignItemId : Designator=R1 Old DesignItemId=R_619_0402 New DesignItemId=R_205_0402
+Change Component Description : Designator=R1 Old Description=Chip resistor, 619, 0402 package New Description=Chip resistor, 205, 0402 package
+Change Component Description : Designator=U4 Old Description=Multiprotocol BluetoothR low energy/2.4 GHz RF System on Chip New Description=Multiprotocol BluetoothR low energy/2.4 GHz RF System on Chip

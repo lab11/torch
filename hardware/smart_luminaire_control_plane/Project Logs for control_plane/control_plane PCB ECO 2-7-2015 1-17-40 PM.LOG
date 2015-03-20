@@ -1,0 +1,15 @@
+Removed Pin From Net: NetName=NetB1_A1 Pin=C37-1
+Removed Pin From Net: NetName=NetB1_A2 Pin=C39-1
+Removed Pin From Net: NetName=NetB1_A2 Pin=U4-30
+Added Component: Designator=B1(BAL-NRF01D3)
+Added Pin To Net: NetName=GND Pin=B1-A2
+Added Pin To Net: NetName=NRF51822_RF_P Pin=B1-A3
+Added Pin To Net: NetName=NetB1_A2 Pin=B1-B1
+Added Pin To Net: NetName=NetB1_A1 Pin=B1-C2
+Added Pin To Net: NetName=NRF51822_RF_N Pin=B1-C3
+Added Pin To Net: NetName=NetB1_A2 Pin=C37-1
+Added Pin To Net: NetName=NetB1_A1 Pin=C39-1
+Added Pin To Net: NetName=NetB1_A1 Pin=U4-30
+Change Net Name : Old Net Name=NetB1_A1 New Net Name=NetB1_C2
+Change Net Name : Old Net Name=NetB1_A2 New Net Name=NetB1_B1
+Added Member To Class: ClassName=U_rf Member=Component B1 BAL-NRF01D3

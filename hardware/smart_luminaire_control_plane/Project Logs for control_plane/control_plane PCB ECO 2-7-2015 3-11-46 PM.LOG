@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=RTC_INT Pin=R13-1
+Removed Pin From Net: NetName=NET_INT Pin=R17-1
+Added Pin To Net: NetName=NET_INT Pin=R13-1
+Added Pin To Net: NetName=RTC_INT Pin=R17-1

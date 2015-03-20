@@ -1,0 +1,19 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: control_plane.PcbDoc   2/15/2015  9:34:15 PM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : control_plane.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        7.9mil (0.20066mm)       Round          34               4.12 Inch (104.73 mm)
+T2        8mil (0.2032mm)          Round          159              17.01 Inch (431.96 mm)
+T3        12mil (0.3048mm)         Round          4                1.99 Inch (50.47 mm)
+T4        15.7mil (0.39878mm)      Round          1                0.00 Inch (0.00 mm)
+T5        47.2mil (1.19888mm)      Round          2                0.25 Inch (6.35 mm)
+T6        39mil (0.9906mm)         Round          3         NPTH   0.28 Inch (7.21 mm)
+---------------------------------------------------------------------------
+Totals                                            203              23.65 Inch (600.73 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=VCC_USB_3.3 Pin=U3-4
+Added Pin To Net: NetName=NetC23_1 Pin=U3-4
+Change Net Name : Old Net Name=NetC23_1 New Net Name=VCC_3.3_FTDI

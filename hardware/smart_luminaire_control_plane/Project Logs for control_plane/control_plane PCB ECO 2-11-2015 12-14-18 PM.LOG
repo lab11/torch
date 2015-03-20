@@ -1,0 +1,7 @@
+Added Pin To Net: NetName=NRF51822_P0.22 Pin=P5-3
+Added Pin To Net: NetName=NRF51822_P0.22 Pin=U4-41
+Added Net: Name=NRF51822_P0.22
+Added Pin To Net: NetName=NRF51822_P0.25 Pin=P5-6
+Added Pin To Net: NetName=NRF51822_P0.25 Pin=U4-44
+Added Net: Name=NRF51822_P0.25
+Added Member To Class: ClassName=U_power Member=Component U2 TPS73533

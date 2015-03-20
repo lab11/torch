@@ -1,0 +1,104 @@
+Designator Footprint               Mid X         Mid Y         Ref X         Ref Y         Pad X         Pad Y TB      Rotation Comment        
+
+B1         BAL-NRF01D3        253.843mil   -285.335mil        244mil       -265mil    253.843mil   -305.669mil  T        270.00 BAL-NRF01D3    
+C34        0402                   525mil       -115mil        525mil       -115mil    507.284mil       -115mil  T        360.00 Ceramic capacitor
+C33        0402                   525mil        -20mil        525mil        -20mil    507.284mil        -20mil  T        360.00 Ceramic capacitor
+C4         0402                   322mil        499mil        322mil        499mil    304.284mil        499mil  T          0.00 Ceramic capacitor
+Y5         RV-3049-C3              40mil        245mil         40mil        245mil     83.307mil    182.008mil  T         90.00 RV-3049-C3     
+Y4         FA-128                -420mil       -465mil       -420mil       -465mil   -448.543mil   -487.638mil  T        360.00 FA-128         
+Y3         CX2520                 457mil       -223mil        457mil       -223mil    482.591mil   -256.464mil  T         90.00 CSX2520        
+Y2         ECX-31B                445mil        -65mil        445mil        -65mil        445mil   -114.213mil  T         90.00 ECX-31B        
+Y1         ABS05             -101.654mil   -263.654mil   -101.654mil   -263.654mil   -101.654mil   -285.307mil  T         90.00 ABS05          
+U8         SC-70-5_(DCK)          380mil       -465mil        380mil       -465mil    336.693mil   -439.409mil  T        270.00 SN74AUP1T14    
+U7         minimold-6             140mil       -400mil        140mil       -400mil    165.591mil   -358.661mil  T        270.00 uPG2214TB      
+U6         WSON                  -364mil        446mil       -364mil        446mil       -439mil    290.488mil  T         90.00 SST25VF064C    
+U5         QFN-32                 -28mil        419mil        -28mil        419mil   -126.425mil    350.102mil  B        360.00 FT232RQ        
+U4         QFN-48                 237mil       -111mil        237mil       -111mil    323.614mil      3.173mil  T        270.00 nRF51822       
+U3         QFN56             -343.654mil   -164.654mil   -343.654mil   -164.654mil   -215.701mil    -10.126mil  T        270.00 CC2538         
+U2         SON-6                  297mil        589mil        297mil        589mil    271.409mil    548.646mil  T         90.00 TPS73533       
+U1         DFN-10                 437mil        329mil        437mil        329mil    493.102mil     289.63mil  T        180.00 LTC4413        
+R27        0402                   140mil        195mil        140mil        195mil        140mil    212.716mil  T        270.00 Chip resistor  
+R26        0402                  -410mil        305mil       -410mil        305mil   -427.716mil        305mil  B        360.00 Chip resistor  
+R25        0402                  -315mil        680mil       -315mil        680mil       -315mil    697.716mil  T        270.00 Chip resistor  
+R24        0402                   525mil         25mil        525mil         25mil    507.284mil         25mil  T        360.00 Chip resistor  
+R23        0402                   -76mil       -202mil        -76mil       -202mil    -93.716mil       -202mil  T        360.00 Chip resistor  
+R22        0402                   -77mil       -160mil        -77mil       -160mil    -94.716mil       -160mil  T        360.00 Chip resistor  
+R21        0402                   -77mil       -118mil        -77mil       -118mil    -94.716mil       -118mil  T        360.00 Chip resistor  
+R20        0402                   -77mil        -76mil        -77mil        -76mil    -94.716mil        -76mil  T        360.00 Chip resistor  
+R19        0402                  -655mil         10mil       -655mil         10mil       -655mil     27.716mil  T        270.00 Chip resistor  
+R18        0402                  -565mil       -365mil       -565mil       -365mil   -547.284mil       -365mil  T        180.00 Chip resistor  
+R17        0402                  -280mil        110mil       -280mil        110mil       -280mil    127.716mil  T        270.00 Chip resistor  
+R16        0402                  -745mil         10mil       -745mil         10mil       -745mil     27.716mil  T        270.00 Chip resistor  
+R15        0402               -37.654mil   -328.654mil    -37.654mil   -328.654mil     -55.37mil   -328.654mil  T        360.00 Chip resistor  
+R14        0402                  -700mil         10mil       -700mil         10mil       -700mil     27.716mil  T        270.00 Chip resistor  
+R13        0402                  -325mil        110mil       -325mil        110mil       -325mil    127.716mil  T        270.00 Chip resistor  
+R12        0402                  -526mil        137mil       -526mil        137mil       -526mil    154.716mil  T        270.00 Chip resistor  
+R11        0402                  -485mil        137mil       -485mil        137mil       -485mil    154.716mil  T        270.00 Chip resistor  
+R10        0402                  -444mil        137mil       -444mil        137mil       -444mil    154.716mil  T        270.00 Chip resistor  
+R9         0402                  -180mil       -375mil       -180mil       -375mil   -197.716mil       -375mil  T        360.00 Chip resistor  
+R8         0402                  -565mil       -320mil       -565mil       -320mil   -547.284mil       -320mil  T        180.00 Chip resistor  
+R7         0402                  -565mil       -365mil       -565mil       -365mil   -582.716mil       -365mil  B        360.00 Chip resistor  
+R3         0402                  -165mil        270mil       -165mil        270mil   -147.284mil        270mil  B        180.00 Chip resistor  
+R1         0402                   122mil        479mil        122mil        479mil    139.716mil        479mil  T        180.00 Chip resistor  
+P6         CAS-220A               800mil        -85mil        800mil        -85mil    727.165mil   -153.898mil  B         90.00 CAS-220        
+P5         TC2030-IDC-NLFP        800mil       -120mil        800mil       -120mil        775mil        -70mil  T        270.00 TC2030         
+P4         SAM_CLP_2_4          -1378mil          0mil      -1378mil          0mil  -1314.417mil         75mil  B        180.00 CLP Header     
+P3         SSM-104-F-DV         -1250mil          0mil      -1250mil          0mil   -1361.22mil        150mil  T        270.00 SSM-104-F-DV   
+P2         SAM_CLP_2_4           1378mil          0mil       1378mil          0mil   1441.583mil         75mil  B        180.00 CLP Header     
+P1         SSM-104-F-DV          1250mil          0mil       1250mil          0mil    1138.78mil        150mil  T        270.00 SSM-104-F-DV   
+J1         Micro_USB-B             -3mil    676.342mil         -3mil        729mil     48.181mil    623.685mil  T        180.00 micro USB-B    
+FB1        0402                   137mil        569mil        137mil        569mil    154.716mil        569mil  B        180.00 Ferrite Bead   
+D4         0402_-_DIODE      -525.654mil     67.346mil   -525.654mil     67.346mil   -525.654mil     85.063mil  T        270.00 LED, Green     
+D3         0402_-_DIODE      -484.654mil     67.346mil   -484.654mil     67.346mil   -484.654mil     85.063mil  T        270.00 LED, Red       
+D2         0402_-_DIODE      -443.654mil     67.346mil   -443.654mil     67.346mil   -443.654mil     85.063mil  T        270.00 LED, Orange    
+D1         0402_-_DIODE           122mil        519mil        122mil        519mil    104.284mil        519mil  T          0.00 LED, Green     
+C46        0402                   140mil        195mil        140mil        195mil        140mil    212.716mil  B        270.00 Ceramic capacitor
+C45        0402                  -350mil       -505mil       -350mil       -505mil       -350mil   -522.716mil  T         90.00 Ceramic capacitor
+C44        0402                  -495mil       -510mil       -495mil       -510mil       -495mil   -527.716mil  T         90.00 Ceramic capacitor
+C43        0402                    65mil       -490mil         65mil       -490mil     82.716mil       -490mil  T        180.00 Ceramic capacitor
+C42        0402                   555mil       -190mil        555mil       -190mil    572.716mil       -190mil  T        180.00 Ceramic capacitor
+C41        0402                   555mil       -255mil        555mil       -255mil    572.716mil       -255mil  T        180.00 Ceramic capacitor
+C40        0402                  -125mil       -445mil       -125mil       -445mil   -142.716mil       -445mil  T        360.00 Ceramic capacitor
+C39        0402                   195mil       -295mil        195mil       -295mil    212.716mil       -295mil  T        180.00 Ceramic capacitor
+C38        0402                   200mil       -515mil        200mil       -515mil        200mil   -497.284mil  T        270.00 Ceramic capacitor
+C37        0402                   235mil       -355mil        235mil       -355mil    252.716mil       -355mil  T        180.00 Ceramic capacitor
+C36        0402                   260mil       -480mil        260mil       -480mil        260mil   -497.716mil  T         90.00 Ceramic capacitor
+C35        0402                  -390mil        645mil       -390mil        645mil   -407.716mil        645mil  B        360.00 Ceramic capacitor
+C32        0402               -37.654mil   -285.654mil    -37.654mil   -285.654mil     -55.37mil   -285.654mil  T        360.00 Ceramic capacitor
+C31        0402               -37.654mil   -241.654mil    -37.654mil   -241.654mil     -55.37mil   -241.654mil  T        360.00 Ceramic capacitor
+C30        0402                  -565mil       -320mil       -565mil       -320mil   -547.284mil       -320mil  B        180.00 Ceramic capacitor
+C29        0402                  -223mil     82.284mil       -223mil     82.284mil   -205.284mil     82.284mil  T        180.00 Ceramic capacitor
+C28        0402                  -152mil     82.284mil       -152mil     82.284mil   -169.716mil     82.284mil  T        360.00 Ceramic capacitor
+C27        0402                   122mil        429mil        122mil        429mil        122mil    446.716mil  B        270.00 Ceramic capacitor
+C25        0402                   117mil        634mil        117mil        634mil        117mil    616.284mil  B         90.00 Ceramic capacitor
+C24        0603_-_Polar_Marking        172mil        414mil        172mil        414mil        172mil    443.528mil  B        270.00 Tantalum capacitor
+C23        0402                  -180mil        330mil       -180mil        330mil       -180mil    347.716mil  B        270.00 Ceramic capacitor
+C22        0402                   320mil       -290mil        320mil       -290mil        320mil   -272.284mil  T        270.00 Ceramic capacitor
+C21        0402                   125mil         65mil        125mil         65mil        125mil     47.283mil  T         90.00 Ceramic capacitor
+C20        0402                   160mil       -255mil        160mil       -255mil    177.716mil       -255mil  B        180.00 Ceramic capacitor
+C19        0402                   447mil       -161mil        447mil       -161mil    429.284mil       -161mil  B        360.00 Ceramic capacitor
+C18        0402                   365mil         50mil        365mil         50mil    347.284mil         50mil  T        360.00 Ceramic capacitor
+C17        0402                  -135mil        -20mil       -135mil        -20mil   -152.716mil        -20mil  B        360.00 Ceramic capacitor
+C16        0402                  -120mil       -330mil       -120mil       -330mil   -137.716mil       -330mil  T        360.00 Ceramic capacitor
+C15        0402                  -540mil       -255mil       -540mil       -255mil   -522.284mil       -255mil  B        180.00 Ceramic capacitor
+C14        0402                  -225mil       -400mil       -225mil       -400mil       -225mil   -382.284mil  B        270.00 Ceramic capacitor
+C13        0402                  -550mil        -10mil       -550mil        -10mil   -532.284mil        -10mil  B        180.00 Ceramic capacitor
+C12        0402              -272.654mil   -400.654mil   -272.654mil   -400.654mil   -272.654mil   -382.937mil  B        270.00 Ceramic capacitor
+C11        0402                  -445mil         45mil       -445mil         45mil   -427.284mil         45mil  B        180.00 Ceramic capacitor
+C10        0402              -332.654mil   -400.654mil   -332.654mil   -400.654mil   -332.654mil   -382.937mil  B        270.00 Ceramic capacitor
+C9         0402                  -415mil       -430mil       -415mil       -430mil       -415mil   -412.284mil  B        270.00 Ceramic capacitor
+C8         0402                  -375mil       -400mil       -375mil       -400mil       -375mil   -382.284mil  B        270.00 Ceramic capacitor
+C7         0402                  -125mil         -5mil       -125mil         -5mil   -142.716mil         -5mil  T        360.00 Ceramic capacitor
+C6         0603                   322mil        254mil        322mil        254mil        322mil    283.528mil  T        270.00 Ceramic capacitor
+C5         0603                   577mil        384mil        577mil        384mil    547.472mil        384mil  T        360.00 Ceramic capacitor
+C3         0603                   237mil        489mil        237mil        489mil    266.528mil        489mil  T        180.00 Ceramic capacitor
+C2         0603                   296mil        691mil        296mil        691mil    266.472mil        691mil  T        360.00 Ceramic capacitor
+C1         0603                   547mil        259mil        547mil        259mil        547mil    288.528mil  T        270.00 Ceramic capacitor
+B2         2450BM15A0002     -302.654mil   -419.654mil   -302.654mil   -419.654mil   -275.094mil   -445.244mil  T        180.00 2450BM15A0002E 
+ANT1       Chip_Antenna         1.315mil   -711.079mil         21mil       -716mil    102.693mil   -711.079mil  T        180.00 Ground Antenna 
+C26        0402                    77mil        634mil         77mil        634mil         77mil    616.284mil  B         90.00 Ceramic capacitor
+R2         0402                    32mil        614mil         32mil        614mil         32mil    596.284mil  B         90.00 Chip resistor  
+R4         0402                   -13mil        614mil        -13mil        614mil        -13mil    596.284mil  B         90.00 Chip resistor  
+R5         0402                  -209mil    139.284mil       -209mil    139.284mil       -209mil        157mil  T        270.00 Chip resistor  
+R6         0402                  -166mil    140.284mil       -166mil    140.284mil       -166mil        158mil  T        270.00 Chip resistor  
+

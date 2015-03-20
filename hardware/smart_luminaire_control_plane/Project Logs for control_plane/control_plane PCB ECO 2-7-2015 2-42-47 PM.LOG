@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=SPI_MISO Pin=U4-14
+Removed Pin From Net: NetName=SPI_SCK Pin=U4-15
+Removed Pin From Net: NetName=SPI_MOSI Pin=U4-16
+Added Pin To Net: NetName=SPI_MISO Pin=U4-4
+Added Pin To Net: NetName=SPI_SCK Pin=U4-5
+Added Pin To Net: NetName=SPI_MOSI Pin=U4-6

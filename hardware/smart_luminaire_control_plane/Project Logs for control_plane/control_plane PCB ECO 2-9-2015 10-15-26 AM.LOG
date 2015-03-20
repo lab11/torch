@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=LED_DR0 Pin=U3-22
+Removed Pin From Net: NetName=LED_DR1 Pin=U3-23
+Removed Pin From Net: NetName=LED_DR3 Pin=U3-26
+Removed Pin From Net: NetName=NET_CTRL Pin=U3-27
+Change Component Description : Designator=U1 Old Description=Dual 2.6A, 2.5V to 5.5V,  Ideal Diodes in 3mm ¡Ñ 3mm DFN New Description=Dual 2.6A, 2.5V to 5.5V,  Ideal Diodes in 3mm × 3mm DFN
+Change Component Description : Designator=U4 Old Description=Multiprotocol BluetoothR low energy/2.4 GHz RF System on Chip New Description=Multiprotocol Bluetooth® low energy/2.4 GHz RF System on Chip
+Added Pin To Net: NetName=NET_CTRL Pin=U3-22
+Added Pin To Net: NetName=LED_DR3 Pin=U3-23
+Added Pin To Net: NetName=LED_DR1 Pin=U3-26
+Added Pin To Net: NetName=LED_DR0 Pin=U3-27

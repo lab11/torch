@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=F\L\A\S\H\_\W\P\ Pin=U3-8
+Removed Pin From Net: NetName=F\L\A\S\H\_\H\O\L\D\ Pin=U3-9
+Added Pin To Net: NetName=F\L\A\S\H\_\H\O\L\D\ Pin=U3-8
+Added Pin To Net: NetName=F\L\A\S\H\_\W\P\ Pin=U3-9

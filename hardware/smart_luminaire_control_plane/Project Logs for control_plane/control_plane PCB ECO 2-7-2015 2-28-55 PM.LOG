@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=SPI_BLE_CS Pin=R13-1
+Removed Pin From Net: NetName=SPI_SCK Pin=R14-1
+Removed Pin From Net: NetName=SPI_MOSI Pin=R16-1
+Removed Pin From Net: NetName=SPI_MISO Pin=R17-2
+Removed Pin From Net: NetName=RTC_INT Pin=R18-2
+Removed Pin From Net: NetName=BLE_INT Pin=R19-2
+Removed Pin From Net: NetName=NET_INT Pin=R20-2
+Removed Pin From Net: NetName=DW_IRQN Pin=R21-2
+Change Component Description : Designator=U4 Old Description=Multiprotocol BluetoothR low energy/2.4 GHz RF System on Chip New Description=Multiprotocol BluetoothR low energy/2.4 GHz RF System on Chip
+Added Pin To Net: NetName=RTC_INT Pin=R13-1
+Added Pin To Net: NetName=NET_INT Pin=R14-1
+Added Pin To Net: NetName=DW_IRQN Pin=R16-1
+Added Pin To Net: NetName=SPI_BLE_CS Pin=R17-2
+Added Pin To Net: NetName=SPI_SCK Pin=R18-2
+Added Pin To Net: NetName=SPI_MOSI Pin=R19-2
+Added Pin To Net: NetName=SPI_MISO Pin=R20-2
+Added Pin To Net: NetName=BLE_INT Pin=R21-2

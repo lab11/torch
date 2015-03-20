@@ -1,0 +1,17 @@
+Removed Pin From Net: NetName=NET_INT Pin=R14-1
+Removed Pin From Net: NetName=DW_IRQN Pin=R16-1
+Removed Pin From Net: NetName=SPI_MOSI Pin=R17-1
+Removed Pin From Net: NetName=NetR17_2 Pin=R17-2
+Removed Pin From Net: NetName=SPI_SCK Pin=R18-2
+Removed Pin From Net: NetName=SPI_MISO Pin=R19-1
+Removed Pin From Net: NetName=NetR17_2 Pin=U3-11
+Removed Pin From Net: NetName=F\L\A\S\H\_\C\S\ Pin=U3-26
+Added Pin To Net: NetName=SPI_MISO Pin=R14-1
+Added Pin To Net: NetName=SPI_MOSI Pin=R16-1
+Added Pin To Net: NetName=NetR17_2 Pin=R17-1
+Added Pin To Net: NetName=NET_INT Pin=R17-2
+Added Pin To Net: NetName=DW_IRQN Pin=R18-2
+Added Pin To Net: NetName=SPI_SCK Pin=R19-1
+Added Pin To Net: NetName=F\L\A\S\H\_\C\S\ Pin=U3-11
+Added Pin To Net: NetName=NetR17_2 Pin=U3-26
+Change Net Name : Old Net Name=NetR17_2 New Net Name=NetR17_1

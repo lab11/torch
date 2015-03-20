@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=SPI_BLE_CS Pin=U4-14
+Removed Pin From Net: NetName=SPI_MISO Pin=U4-17
+Added Pin To Net: NetName=SPI_MISO Pin=U4-14
+Added Pin To Net: NetName=SPI_BLE_CS Pin=U4-17

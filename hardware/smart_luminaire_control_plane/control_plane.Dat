@@ -1,0 +1,52 @@
+Field=Designator~String~Designator~223|Field=Value~String~Value~77|Field=Quantity~Integer~Quantity~76|Field=Footprint~String~Footprint~98|Field=Description~String~Description~159|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~control_plane.PrjPcb|ReportField=ProjectFullPath~C:\Users\Ye-sheng\Dropbox\Altium_YeSheng\smart_luminaire_control_plane\control_plane.PrjPcb|ReportField=Title~Bill of Materials For Project [control_plane.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~101|ReportField=ReportTime~10:08:48 AM|ReportField=ReportDate~2/16/2015|ReportField=ReportDateTime~2/16/2015 10:08:48 AM|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~Ye-Sheng Kuo|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~|ReportField=CurrentTime~|ReportField=Date~|ReportField=DocumentFullPathAndName~|ReportField=DocumentName~|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~|ReportField=Organization~|ReportField=ProjectName~|ReportField=Revision~2|ReportField=Rule~|ReportField=SheetNumber~1|ReportField=SheetTotal~8|ReportField=Time~|ReportField=Title~Control Plane|ReportField=DataSourceFileName~control_plane.PrjPcb|ReportField=DataSourceFullPath~C:\Users\Ye-sheng\Dropbox\Altium_YeSheng\smart_luminaire_control_plane\control_plane.PrjPcb
+ANT1||1|Chip Antenna|2.4GHz Surface Mount Device (SMD) On Ground Antenna, 50 Ohms
+B1||1|BAL-NRF01D3|50 ohm nominal input / conjugate match balun to nRF51822-CEAA
+B2||1|2450BM15A0002|2.45 GHz Balun for TI CC253X
+C1, C3, C5|4.7 uF|3|0603|Ceramic capacitor, 4.7u, 10V, 0603 package
+C2|1 uF|1|0603|Ceramic capacitor, 1 uF, 16 V, 0603 package
+C4|10000 pF|1|0402|Ceramic capacitor, 10000 pF, 16 V, 0402 package
+C6|10 uF|1|0603|Ceramic capacitor, 10 uF, 16 V, 0603 package
+C7, C9, C17, C25|1 uF|4|0402|Ceramic capacitor, 1 uF, 16V, 0402 package
+C8, C10, C11, C12, C13, C15, C16, C18, C19, C21, C23, C26, C27, C35, C46|0.1 uF|15|0402|Ceramic capacitor, 0.1u, 0402 package
+C14|220 pF|1|0402|Ceramic capacitor, 220 pF, 0402 package
+C20|0.047 uF|1|0402|Ceramic capacitor, 0.047u, 16V, 0402 package
+C22, C30, C36, C43|1000 pF|4|0402|Ceramic capacitor, 1000 pF, 0402 package
+C24|4.7 uF|1|0603 - Polar Marking|Tantalum capacitor, 4.7 uF, 0603 package
+C28, C29|47 pF|2|0402|Ceramic capacitor, 47 pF, 0402 package
+C31, C32|22 pF|2|0402|Ceramic capacitor, 22 pF, 0402 package
+C33, C34|13 pF|2|0402|Ceramic capacitor, 13 pF, 50 V, 0402 package
+C37, C38, C40|100 pF|3|0402|Ceramic capacitor, 100 pF, 0402 package
+C39|2200 pF|1|0402|Ceramic capacitor, 2200 pF, 0402 package
+C41, C42, C44, C45|12 pF|4|0402|Ceramic capacitor, 12 pF, 0402 package
+D1, D4||2|0402 - DIODE|LED, Green,  0402
+D2||1|0402 - DIODE|LED, Orange, 0402
+D3||1|0402 - DIODE|LED, Red, 0402
+FB1||1|0402|Ferrite Bead, 150 mA, 0402 package
+J1||1|Micro USB-B|CONN USB MICRO B RECPT SMT R/A
+P1, P3||2|SSM-104-F-DV|Samtec 2x4 100 mil female connector
+P2, P4||2|SAM_CLP_2_4|Samtec CLP 2x4 0.05" Female Header
+P5||1|TC2030-IDC-NLFP|TC2030-MCP-NL
+P6||1|CAS-220A|DPDT dip switch
+R1, R12|205|2|0402|Chip resistor, 205, 0402 package
+R2, R3, R4, R15, R24|0|5|0402|Chip resistor, 0, 0402 package
+R5, R6|33|2|0402|Chip resistor, 33, 0402 package
+R7, R25, R26|100K|3|0402|Chip resistor, 100K, 0402 package
+R8|2.2K|1|0402|Chip resistor, 2.2K, 0402 package
+R9|56K|1|0402|Chip resistor, 56K, 0402 package
+R10|270|1|0402|Chip resistor, 270, 0402 package
+R11|374|1|0402|Chip resistor, 374, 0402 package
+R13, R14, R16, R17, R18, R19, R20, R21, R22, R23|100|10|0402|Chip resistor, 100, 0402 package
+R27|10K|1|0402|Chip resistor, 10K, 0402 package
+U1||1|DFN-10|Dual 2.6A, 2.5V to 5.5V,  Ideal Diodes in 3mm × 3mm DFN
+U2||1|SON-6|500mA, Low Quiescent Current, Ultra-Low Noise, High PSRR  Low-Dropout Linear Regulator
+U3||1|QFN56|A Powerful System-On-Chip for 2.4-GHz IEEE 802.15.4, 6LoWPAN  and ZigBee Applications
+U4||1|QFN-48|Multiprotocol Bluetooth® low energy/2.4 GHz RF System on Chip
+U5||1|QFN-32|FT232R USB UART
+U6||1|WSON|64 Mbit SPI Serial Dual I/O Flash
+U7||1|minimold-6|GaAs Integrated Circuit for L, S-Band SPDT Switch
+U8||1|SC-70-5 (DCK)|LOW POWER, 1.8/2.5/3.3-V INPUT, 3.3-V CMOS OUTPUT, SINGLE  SCHMITT-TRIGGER INVERTER GATE
+Y1||1|ABS05|32768 Hz SMD Low profile crystal
+Y2||1|ECX-31B|SMD TUNING FORK CRYSTAL
+Y3||1|CX2520|Crystal oscillator
+Y4||1|FA-128|MHz Range Crystal Unit
+Y5||1|RV-3049-C3|Real Time Clock Module with SPI-Bus
