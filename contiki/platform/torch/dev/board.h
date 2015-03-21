@@ -103,8 +103,8 @@
 /** \name LED PWM
  *
  */
-#define LED_PWM_PORT_NUM      GPIO_D_NUM
-#define LED_PWM_PIN           0
+#define LED_PWM_PORT_NUM      GPIO_A_NUM
+#define LED_PWM_PIN           7
 /** @} */
 /*---------------------------------------------------------------------------*/
 /** \name USB configuration
