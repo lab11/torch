@@ -54,7 +54,7 @@ typedef uint32_t rtimer_clock_t;
 #endif
 
 #ifndef FLASH_CCA_CONF_BOOTLDR_BACKDOOR_ACTIVE_HIGH
-#define FLASH_CCA_CONF_BOOTLDR_BACKDOOR_ACTIVE_HIGH 0 /**< A logic low level activates the boot loader */
+#define FLASH_CCA_CONF_BOOTLDR_BACKDOOR_ACTIVE_HIGH 1 /**< A logic high level activates the boot loader */
 #endif
 /** @} */
 
