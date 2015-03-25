@@ -4,10 +4,10 @@ ifndef CONTIKI
   $(error CONTIKI not defined! You must specify where CONTIKI resides!)
 endif
 
-CONTIKI_TARGET_DIRS = . dev
+CONTIKI_TARGET_DIRS = . dev ../../dev/sst25vf
 
 CONTIKI_TARGET_SOURCEFILES += leds.c leds-arch.c
-CONTIKI_TARGET_SOURCEFILES += contiki-main.c rfswitch.c
+CONTIKI_TARGET_SOURCEFILES += contiki-main.c rfswitch.c sst25vf.c
 
 TARGET_START_SOURCEFILES += startup-gcc.c
 TARGET_STARTFILES = ${addprefix $(OBJECTDIR)/,${call oname, $(TARGET_START_SOURCEFILES)}}
@@ -52,20 +52,15 @@ ifdef ID
 endif
 
 ifdef PORT
-  BSL_FLAGS = -p $(PORT)
+  BSL_FLAGS += -p $(PORT)
 endif
 
 install: all
 ifeq ($(wildcard $(BSL)), )
 	@echo "ERROR: Could not find the cc2538-bsl script. Did you run 'git submodule update --init' ?"
 else
-	python2 $(BSL) -b 115200 -e -w -v --dtr_active_high $(BSL_FLAGS) $(CONTIKI_PROJECT).bin
-endif
-
-fix: all
-ifeq ($(wildcard $(BSL)), )
-	@echo "ERROR: Could not find the cc2538-bsl script. Did you run 'git submodule update --init' ?"
-else
 	python2 $(BSL) -b 115200 -e -w -v $(BSL_FLAGS) $(CONTIKI_PROJECT).bin
 endif
 
+jtag: all
+	../../tools/flash.sh . $(CONTIKI_PROJECT).bin

@@ -109,6 +109,8 @@ main(void)
   //rv3049_init();
 
   rfswitch_init();
+  sst25vf_init();
+  sst25vf_turn_on();
 
   /*
    * Character I/O Initialization.

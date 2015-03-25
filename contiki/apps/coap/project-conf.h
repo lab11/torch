@@ -23,8 +23,12 @@
 
 // Set the RF channel and panid
 // #define IEEE802154_CONF_PANID 0x689a
-#define IEEE802154_CONF_PANID 0x0022
-#define CC2538_RF_CONF_CHANNEL 19
+
+// #define IEEE802154_CONF_PANID 0x0022
+// #define CC2538_RF_CONF_CHANNEL 19
+
+#define IEEE802154_CONF_PANID 0xbbb1
+#define CC2538_RF_CONF_CHANNEL 20
 
 
 // RPL

@@ -107,6 +107,17 @@
 #define LED_PWM_PIN           7
 /** @} */
 /*---------------------------------------------------------------------------*/
+/** \name Flash
+ *
+ */
+#define SST25VF_CS_PORT_NUM      GPIO_C_NUM
+#define SST25VF_CS_PIN           3
+#define SST25VF_WP_PORT_NUM      GPIO_C_NUM
+#define SST25VF_WP_PIN           4
+#define SST25VF_HOLD_PORT_NUM    GPIO_C_NUM
+#define SST25VF_HOLD_PIN         5
+/** @} */
+/*---------------------------------------------------------------------------*/
 /** \name USB configuration
  *
  * The USB pullup is driven by PC0 and is shared with LED1
@@ -147,10 +158,10 @@
  * These values configure which CC2538 pins to use for the RTC chip.
  * @{
  */
-#define RV3049_INT_N_PORT_NUM    GPIO_B_NUM
-#define RV3049_INT_N_PIN         2
+#define RV3049_INT_N_PORT_NUM    GPIO_C_NUM
+#define RV3049_INT_N_PIN         7
 #define RV3049_CS_PORT_NUM       GPIO_B_NUM
-#define RV3049_CS_PIN            1
+#define RV3049_CS_PIN            0
 /** @} */
 /*---------------------------------------------------------------------------*/
 /**
@@ -173,12 +184,12 @@
  * These values configure which CC2538 pins to use for the SPI lines.
  * @{
  */
-#define SPI_CLK_PORT             GPIO_C_NUM
-#define SPI_CLK_PIN              6
-#define SPI_MOSI_PORT            GPIO_C_NUM
-#define SPI_MOSI_PIN             7
-#define SPI_MISO_PORT            GPIO_B_NUM
-#define SPI_MISO_PIN             0
+#define SPI_CLK_PORT             GPIO_A_NUM
+#define SPI_CLK_PIN              5
+#define SPI_MOSI_PORT            GPIO_A_NUM
+#define SPI_MOSI_PIN             4
+#define SPI_MISO_PORT            GPIO_A_NUM
+#define SPI_MISO_PIN             3
 /** @} */
 /*---------------------------------------------------------------------------*/
 /**

@@ -9,6 +9,7 @@
 #include "dev/serial-line.h"
 #include "dev/sys-ctrl.h"
 #include "dev/pwm.h"
+#include "sst25vf.h"
 #include "net/rime/broadcast.h"
 #include "net/ip/uip.h"
 #include "net/ip/uip-udp-packet.h"
@@ -28,45 +29,89 @@
 PROCESS(app, "SDL Torch with CoAP");
 AUTOSTART_PROCESSES(&app);
 
-uint8_t  light_on = 1;
-uint32_t light_freq = 2000; // 2 kHz
-uint32_t light_dc = 50; // 50%
+
+#define MAGIC 0x98cc431a
+
+#define DEFAULT_LIGHT_ON   1
+#define DEFAULT_LIGHT_FREQ 2000   // 2 kHz
+#define DEFAULT_LIGHT_DC   50     // 50%
+
+typedef struct {
+  uint32_t magic;
+  uint32_t  light_on;
+  uint32_t light_freq;
+  uint32_t light_dc;
+} torch_config_flash_t;
+
+// State of the system that should be preserved
+torch_config_flash_t torch_config;
 
 
+static void read_flash_config (torch_config_flash_t* conf) {
+  sst25vf_read_page(0, (uint8_t*) conf, sizeof(torch_config_flash_t));
+}
+
+static void write_flash_config (torch_config_flash_t* conf) {
+  // NOTE
+  // we are erasing the first 4 kb each time, so don't put anything there
+  sst25vf_4kb_erase(0);
+  sst25vf_program(0, (uint8_t*) conf, sizeof(torch_config_flash_t));
+}
+
+
+static void
+light_init () {
+  if (torch_config.light_on) {
+    pwm_init(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_freq, LED_PWM_PORT_NUM, LED_PWM_PIN);
+    pwm_start(GPTIMER_2, GPTIMER_SUBTIMER_A);
+  } else {
+    GPIO_SOFTWARE_CONTROL(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
+    GPIO_SET_OUTPUT(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
+    GPIO_CLR_PIN(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
+  }
+}
 
 static void
 light_set_on ()
 {
-  if (light_on) return;
+  if (torch_config.light_on) return;
   leds_toggle(LEDS_GREEN);
-  pwm_init(GPTIMER_2, GPTIMER_SUBTIMER_A, light_freq, LED_PWM_PORT_NUM, LED_PWM_PIN);
+  pwm_init(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_freq, LED_PWM_PORT_NUM, LED_PWM_PIN);
   pwm_start(GPTIMER_2, GPTIMER_SUBTIMER_A);
-  light_on = 1;
+  torch_config.light_on = 1;
+
+  write_flash_config(&torch_config);
 }
 
 static void
 light_set_frequency (uint32_t freq)
 {
-  light_freq = freq;
-  light_on = 0;
+  torch_config.light_freq = freq;
+  torch_config.light_on = 0;
   light_set_on(freq);
+
+  write_flash_config(&torch_config);
 }
 
 static void
 light_set_dc (uint32_t dc)
 {
-  light_dc = dc;
+  torch_config.light_dc = dc;
+
+  write_flash_config(&torch_config);
 }
 
 static void
 light_set_off ()
 {
-  if (!light_on) return;
+  if (!torch_config.light_on) return;
   pwm_stop(GPTIMER_2, GPTIMER_SUBTIMER_A);
   GPIO_SOFTWARE_CONTROL(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
   GPIO_SET_OUTPUT(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
   GPIO_CLR_PIN(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
-  light_on = 0;
+  torch_config.light_on = 0;
+
+  write_flash_config(&torch_config);
 }
 
 
@@ -132,21 +177,12 @@ coap_parse_uint (void* request, uint32_t* u)
 {
   int length;
   const char* payload = NULL;
-  // int n;
-
-  // *u = strtol()
 
   length = REST.get_request_payload(request, (const uint8_t**) &payload);
 
-
   if (length > 0) {
     *u = strtol(payload, NULL, 10);
-    // n = 1;
-    // *u = 9;
-    // //n = sscanf(payload, "%u", (unsigned int*) u);
-    // if (n == 1) {
-      return 0;
-    // }
+    return 0;
   }
 
   return -1;
@@ -166,7 +202,7 @@ onoff_power_get_handler(void *request,
                   int32_t *offset) {
   int length;
 
-  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%s", (light_on)?"true":"false");
+  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%s", (torch_config.light_on)?"true":"false");
 
   REST.set_header_content_type(response, REST.type.TEXT_PLAIN);
   REST.set_response_payload(response, buffer, length);
@@ -343,7 +379,9 @@ sdl_luxapose_frequency_get_handler(void *request,
                   int32_t *offset) {
   int length;
 
-  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%u", (unsigned int) light_freq);
+read_flash_config(&torch_config);
+
+  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%u", (unsigned int) torch_config.light_freq);
 
   REST.set_header_content_type(response, REST.type.TEXT_PLAIN);
   REST.set_response_payload(response, buffer, length);
@@ -386,7 +424,9 @@ sdl_luxapose_dutycycle_get_handler(void *request,
                   int32_t *offset) {
   int length;
 
-  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%u", (unsigned int) light_dc);
+read_flash_config(&torch_config);
+
+  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%u", (unsigned int) torch_config.light_dc);
 
   REST.set_header_content_type(response, REST.type.TEXT_PLAIN);
   REST.set_response_payload(response, buffer, length);
@@ -482,6 +522,27 @@ PROCESS_THREAD(app, ev, data) {
   PROCESS_BEGIN();
 
   leds_on(LEDS_ALL);
+
+  // Check the flash for a saved config blob
+  // And init the main LED
+  {
+    read_flash_config(&torch_config);
+
+    if (torch_config.magic != MAGIC) {
+      // Give it an ol erase for good measure
+      sst25vf_chip_erase();
+
+      // Setup defaults
+      torch_config.magic      = MAGIC;
+      torch_config.light_on   = DEFAULT_LIGHT_ON;
+      torch_config.light_freq = DEFAULT_LIGHT_FREQ;
+      torch_config.light_dc   = DEFAULT_LIGHT_DC;
+      // Save them so we don't do this next time
+      write_flash_config(&torch_config);
+    }
+    // Set the light to the saved values
+    light_init();
+  }
 
   // CoAP + REST
   rest_init_engine();
