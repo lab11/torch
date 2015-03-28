@@ -46,7 +46,6 @@ def get_conf (light):
                 response = yield from protocol.request(request).response
             except Exception as e:
                 print('failed {} for {}'.format(path, light['ip']))
-                break
             else:
                 light[message[1]] = message[2](response.payload)
                 print('light_{}.{} = {}'.format(
