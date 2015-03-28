@@ -8,6 +8,8 @@ import aiocoap
 
 import ipaddress
 
+import pprint
+
 logging.basicConfig(level=logging.ERROR)
 
 valid_ips = []
@@ -81,7 +83,8 @@ def turn_all_on (ips):
 @asyncio.coroutine
 def main ():
     yield from asyncio.async(find_bulbs())
-    print('found {}'.format(valid_ips))
+    print("Found {} bulbs:".format(len(valid_ips)))
+    pprint.pprint(valid_ips)
     yield from asyncio.async(turn_all_off(valid_ips))
     print('Off!')
 
