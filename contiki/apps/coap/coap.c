@@ -22,7 +22,7 @@
 #include "rest-engine.h"
 
 
-#define SW_VERSION "1.0"
+#define SW_VERSION "1.1"
 #define HW_VERSION "A"
 
 
@@ -30,11 +30,17 @@ PROCESS(app, "SDL Torch with CoAP");
 AUTOSTART_PROCESSES(&app);
 
 
-#define MAGIC 0x98cc431a
+#define MAGIC 0x98cc431b
 
-#define DEFAULT_LIGHT_ON   1
+#ifndef DEFAULT_LIGHT_ON
+#define DEFAULT_LIGHT_ON   0
+#endif
+#ifndef DEFAULT_LIGHT_FREQ
 #define DEFAULT_LIGHT_FREQ 2000   // 2 kHz
+#endif
+#ifndef DEFAULT_LIGHT_DC
 #define DEFAULT_LIGHT_DC   50     // 50%
+#endif
 
 typedef struct {
   uint32_t magic;

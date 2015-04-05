@@ -55,6 +55,10 @@ ifdef PORT
   BSL_FLAGS += -p $(PORT)
 endif
 
+ifdef CC2538_BSL_FORCE_CLOSE
+  BSL_FLAGS += -f
+endif
+
 install: all
 ifeq ($(wildcard $(BSL)), )
 	@echo "ERROR: Could not find the cc2538-bsl script. Did you run 'git submodule update --init' ?"
