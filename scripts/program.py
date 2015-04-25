@@ -2,6 +2,7 @@
 
 from sh import make
 from sh import touch
+import sh
 
 import sys
 import os
@@ -9,7 +10,7 @@ import os
 lights = []
 
 on = '1'
-btldr = '0'
+btldr = '1'
 
 light_conf = 'lights.conf'
 
@@ -46,14 +47,29 @@ with open(light_conf) as f:
             answer = input(prompt)
             if len(answer) == 0 or 'y' in answer or 'Y' in answer:
                 # do the programming
-                print('  programming...')
 
                 # need startup_gcc.c to recompile
                 cmd = '../../platform/torch/startup_gcc.c'
                 touch(cmd)
 
                 cmd = 'install ID=c0:98:e5:54:4f:{} ON={} FREQ={} BTLDR={}'.format(device_id, on, freq, btldr)
-                print(make(*cmd.split()))
+                print(cmd)
+                try:
+                    print('  programming...')
+                    response = make(*cmd.split())
+                    print(response)
+                except sh.ErrorReturnCode_2 as e:
+                    if btldr == '0':
+
+                        if 'ERROR: No response from target on status request. (Did you disable the bootloader?)' in str(e.stderr):
+                            # this is ok, the bootloader is just now closed
+                            print('  programmed successfully with the bootloader closed')
+                            break
+                        else:
+                            print('  programming error, likely could not access bootloader')
+                            continue
+
+                print('  programmed successfully with the bootloader open')
                 break
 
             elif 's' in answer or 'S' in answer:

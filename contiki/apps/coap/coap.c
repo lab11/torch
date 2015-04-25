@@ -44,7 +44,7 @@ AUTOSTART_PROCESSES(&app);
 
 typedef struct {
   uint32_t magic;
-  uint32_t  light_on;
+  uint32_t light_on;
   uint32_t light_freq;
   uint32_t light_dc;
 } torch_config_flash_t;
@@ -70,6 +70,7 @@ light_init () {
   if (torch_config.light_on) {
     pwm_init(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_freq, LED_PWM_PORT_NUM, LED_PWM_PIN);
     pwm_start(GPTIMER_2, GPTIMER_SUBTIMER_A);
+    pwm_set_dutycycle(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_dc);
   } else {
     GPIO_SOFTWARE_CONTROL(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
     GPIO_SET_OUTPUT(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
@@ -103,6 +104,7 @@ static void
 light_set_dc (uint32_t dc)
 {
   torch_config.light_dc = dc;
+  pwm_set_dutycycle(GPTIMER_2, GPTIMER_SUBTIMER_A, dc);
 
   write_flash_config(&torch_config);
 }
