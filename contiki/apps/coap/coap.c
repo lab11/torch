@@ -27,10 +27,18 @@
 
 
 PROCESS(app, "SDL Torch with CoAP");
+
+PROCESS(fade_process, "Issue CoAP POST");
+uint32_t fade_dc_start;
+uint32_t fade_dc_stop;
+uint8_t  fade_dc_direction;
+
+
+
 AUTOSTART_PROCESSES(&app);
 
 
-#define MAGIC 0x98cc431b
+#define MAGIC 0x98cc431c
 
 #ifndef DEFAULT_LIGHT_ON
 #define DEFAULT_LIGHT_ON   0
@@ -39,7 +47,7 @@ AUTOSTART_PROCESSES(&app);
 #define DEFAULT_LIGHT_FREQ 2000   // 2 kHz
 #endif
 #ifndef DEFAULT_LIGHT_DC
-#define DEFAULT_LIGHT_DC   50     // 50%
+#define DEFAULT_LIGHT_DC   5000     // 50%
 #endif
 
 typedef struct {
@@ -52,6 +60,7 @@ typedef struct {
 // State of the system that should be preserved
 torch_config_flash_t torch_config;
 
+static struct etimer fade_timer;
 
 static void read_flash_config (torch_config_flash_t* conf) {
   sst25vf_read_page(0, (uint8_t*) conf, sizeof(torch_config_flash_t));
@@ -67,44 +76,28 @@ static void write_flash_config (torch_config_flash_t* conf) {
 
 static void
 light_init () {
-  if (torch_config.light_on) {
-    pwm_init(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_freq, LED_PWM_PORT_NUM, LED_PWM_PIN);
-    pwm_start(GPTIMER_2, GPTIMER_SUBTIMER_A);
-    pwm_set_dutycycle(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_dc);
-  } else {
-    GPIO_SOFTWARE_CONTROL(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
-    GPIO_SET_OUTPUT(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
-    GPIO_CLR_PIN(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
+  uint32_t dc = torch_config.light_dc;
+  if (!torch_config.light_on) {
+    dc = 0;
   }
+  pwm_init(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_freq, dc, LED_PWM_PORT_NUM, LED_PWM_PIN);
+  pwm_start(GPTIMER_2, GPTIMER_SUBTIMER_A);
+}
+
+static void
+light_new_duty_cycle (uint32_t start, uint32_t dc)
+{
+  fade_dc_start = start;
+  fade_dc_stop = dc;
+  process_start(&fade_process, NULL);
 }
 
 static void
 light_set_on ()
 {
   if (torch_config.light_on) return;
-  leds_toggle(LEDS_GREEN);
-  pwm_init(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_freq, LED_PWM_PORT_NUM, LED_PWM_PIN);
-  pwm_start(GPTIMER_2, GPTIMER_SUBTIMER_A);
   torch_config.light_on = 1;
-
-  write_flash_config(&torch_config);
-}
-
-static void
-light_set_frequency (uint32_t freq)
-{
-  torch_config.light_freq = freq;
-  torch_config.light_on = 0;
-  light_set_on(freq);
-
-  write_flash_config(&torch_config);
-}
-
-static void
-light_set_dc (uint32_t dc)
-{
-  torch_config.light_dc = dc;
-  pwm_set_dutycycle(GPTIMER_2, GPTIMER_SUBTIMER_A, dc);
+  light_new_duty_cycle(0, torch_config.light_dc);
 
   write_flash_config(&torch_config);
 }
@@ -113,15 +106,42 @@ static void
 light_set_off ()
 {
   if (!torch_config.light_on) return;
-  pwm_stop(GPTIMER_2, GPTIMER_SUBTIMER_A);
-  GPIO_SOFTWARE_CONTROL(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
-  GPIO_SET_OUTPUT(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
-  GPIO_CLR_PIN(GPIO_PORT_TO_BASE(LED_PWM_PORT_NUM), GPIO_PIN_MASK(LED_PWM_PIN));
   torch_config.light_on = 0;
-
+  light_new_duty_cycle(torch_config.light_dc, 0);
   write_flash_config(&torch_config);
 }
 
+
+static void
+light_set_frequency (uint32_t freq)
+{
+  torch_config.light_freq = freq;
+  pwm_set_frequency(GPTIMER_2, GPTIMER_SUBTIMER_A, freq);
+  write_flash_config(&torch_config);
+}
+
+static void
+light_set_dc (uint32_t dc)
+{
+  uint32_t starting_dc;
+
+  if (dc == 0) {
+    light_set_off();
+  } else {
+
+    // Need to fix things up if dc == 0
+    if (torch_config.light_on == 0) {
+      starting_dc = 0;
+      torch_config.light_on = 1;
+    } else {
+      starting_dc = torch_config.light_dc;
+    }
+
+    torch_config.light_dc = dc;
+    light_new_duty_cycle(starting_dc, dc);
+    write_flash_config(&torch_config);
+  }
+}
 
 
 
@@ -434,7 +454,7 @@ sdl_luxapose_dutycycle_get_handler(void *request,
 
 read_flash_config(&torch_config);
 
-  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%u", (unsigned int) torch_config.light_dc);
+  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%u", (unsigned int) torch_config.light_dc/100);
 
   REST.set_header_content_type(response, REST.type.TEXT_PLAIN);
   REST.set_response_payload(response, buffer, length);
@@ -454,7 +474,7 @@ sdl_luxapose_dutycycle_post_handler(void *request,
   if (ret < 0) {
     REST.set_response_status(response, REST.status.BAD_REQUEST);
   } else {
-    light_set_dc(u);
+    light_set_dc(u*100);
   }
 }
 
@@ -570,6 +590,49 @@ PROCESS_THREAD(app, ev, data) {
 
   while (1) {
     PROCESS_WAIT_EVENT();
+  }
+
+  PROCESS_END();
+}
+
+
+/* This process handles making a fade between different light duty cycles.
+ */
+PROCESS_THREAD(fade_process, ev, data) {
+  PROCESS_BEGIN();
+
+  // All state is global because something is weird with these contiki macros
+
+  // Need to record if we are going up or down
+  if (fade_dc_start > fade_dc_stop) {
+    fade_dc_direction = 0;
+  } else {
+    fade_dc_direction = 1;
+  }
+
+  etimer_set(&fade_timer, CLOCK_SECOND/500);
+
+  while (1) {
+    PROCESS_WAIT_EVENT();
+
+    if (etimer_expired(&fade_timer)) {
+
+      if (fade_dc_direction == 0) {
+        fade_dc_start--;
+      } else {
+        fade_dc_start++;
+      }
+
+      pwm_set_dutycycle(GPTIMER_2, GPTIMER_SUBTIMER_A, fade_dc_start);
+      leds_toggle(LEDS_GREEN);
+
+      if ((fade_dc_direction == 0 && fade_dc_start > fade_dc_stop) ||
+          (fade_dc_direction == 1 && fade_dc_start < fade_dc_stop)) {
+        etimer_restart(&fade_timer);
+      } else {
+        break;
+      }
+    }
   }
 
   PROCESS_END();
