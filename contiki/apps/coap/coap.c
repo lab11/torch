@@ -75,21 +75,23 @@ static void write_flash_config (torch_config_flash_t* conf) {
 
 
 static void
-light_init () {
-  uint32_t dc = torch_config.light_dc;
-  if (!torch_config.light_on) {
-    dc = 0;
-  }
-  pwm_init(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_freq, dc, LED_PWM_PORT_NUM, LED_PWM_PIN);
-  pwm_start(GPTIMER_2, GPTIMER_SUBTIMER_A);
-}
-
-static void
 light_new_duty_cycle (uint32_t start, uint32_t dc)
 {
   fade_dc_start = start;
   fade_dc_stop = dc;
   process_start(&fade_process, NULL);
+}
+
+static void
+light_init () {
+  pwm_init(GPTIMER_2, GPTIMER_SUBTIMER_A, torch_config.light_freq, torch_config.light_dc, LED_PWM_PORT_NUM, LED_PWM_PIN);
+  pwm_start(GPTIMER_2, GPTIMER_SUBTIMER_A);
+
+  // turn the light off if it should be off
+  //    just setting the duty cycle to 0 doesn't work for some reason...
+  if (!torch_config.light_on) {
+      light_new_duty_cycle(torch_config.light_dc, 0);
+  }
 }
 
 static void
