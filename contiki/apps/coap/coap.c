@@ -21,6 +21,8 @@
 #include <stdlib.h>
 #include "rest-engine.h"
 
+#include "nrf51822.h"
+
 
 #define SW_VERSION "1.1"
 #define HW_VERSION "A"
@@ -130,6 +132,9 @@ light_set_dc (uint32_t dc)
   if (dc == 0) {
     light_set_off();
   } else {
+    if (dc > 100) {
+      dc = 100;
+    }
 
     // Need to fix things up if dc == 0
     if (torch_config.light_on == 0) {
@@ -543,6 +548,15 @@ RESOURCE(coap_device_hardware_version,
          NULL);
 
 
+void handle_ble_interrupt(uint8_t type, uint8_t len, uint8_t* buf) {
+  if (type == BCP_RSP_LED) {
+    if (buf[0] == 0) {
+      leds_off(LEDS_ALL);
+    } else {
+      leds_on(LEDS_ALL);
+    }
+  }
+}
 
 
 
@@ -589,6 +603,9 @@ PROCESS_THREAD(app, ev, data) {
   rest_activate_resource(&coap_device_software_version, "device/software/Version");
   rest_activate_resource(&coap_device_hardware_version, "device/hardware/Version");
 
+
+  // BLE
+  nrf51822_init(handle_ble_interrupt);
 
   while (1) {
     PROCESS_WAIT_EVENT();

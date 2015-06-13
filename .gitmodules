@@ -1,0 +1,3 @@
+[submodule "nrf51822/squall"]
+	path = nrf51822/squall
+	url = https://github.com/helena-project/squall

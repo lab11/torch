@@ -93,6 +93,18 @@
 #define LED_GREEN_MASK           GPIO_PIN_MASK(0)
 /** @} */
 /*---------------------------------------------------------------------------*/
+/** \name nRF51822 BLE
+ *
+ */
+#define NRF51822_INT_PORT_NUM  GPIO_B_NUM
+#define NRF51822_INT_PIN       4
+#define NRF51822_INT_BASE      GPIO_PORT_TO_BASE(NRF51822_INT_PORT_NUM)
+#define NRF51822_INT_MASK      GPIO_PIN_MASK(NRF51822_INT_PIN)
+
+#define NRF51822_CS_N_PORT_NUM GPIO_B_NUM
+#define NRF51822_CS_N_PIN      3
+/** @} */
+/*---------------------------------------------------------------------------*/
 /** \name RF Switch
  *
  */
