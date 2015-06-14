@@ -5,3 +5,5 @@
 *.hex
 contiki-torch.a
 obj_torch
+*.lst
+*.map

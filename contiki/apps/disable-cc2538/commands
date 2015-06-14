@@ -1,0 +1,9 @@
+
+arm-none-eabi-gcc -mcpu=cortex-m3 -mlittle-endian -ffunction-sections -fdata-sections -fshort-enums -fomit-frame-pointer -fno-strict-aliasing -Wall -mthumb -nostartfiles -T cc2538.ld -Wl,--gc-sections,--sort-section=alignment -Wl,-Map=out.map,--cref,--no-warn-mismatch blink.c -o out.o
+
+arm-none-eabi-objcopy -O binary --gap-fill 0xff out.o out.bin
+
+python2 ~/workspace/contiki/tools/cc2538-bsl/cc2538-bsl.py -b 115200 -e -w -v out.bin
+
+arm-none-eabi-objdump --disassemble --source --disassembler-options=force-thumb out.o > out.lst
+
