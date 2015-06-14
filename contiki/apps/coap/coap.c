@@ -24,7 +24,7 @@
 #include "nrf51822.h"
 
 
-#define SW_VERSION "1.1"
+#define SW_VERSION "1.2"
 #define HW_VERSION "A"
 
 
@@ -273,35 +273,51 @@ RESOURCE(coap_onoff_power,
  ******************************************************************************/
 
 static void
-led0_power_get_handler(void *request,
-                       void *response,
-                       uint8_t *buffer,
-                       uint16_t preferred_size,
-                       int32_t *offset) {
+led_get_handler(void *request,
+                void *response,
+                uint8_t *buffer,
+                uint16_t preferred_size,
+                int32_t *offset,
+                unsigned char led) {
   int length;
 
   length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%s",
-    ((leds_get()&LEDS_GREEN)==LEDS_GREEN)?"true":"false");
+    ((leds_get()&led)==led)?"true":"false");
 
   REST.set_header_content_type(response, REST.type.TEXT_PLAIN);
   REST.set_response_payload(response, buffer, length);
 }
 
 static void
-led0_power_post_handler(void *request,
-                  void *response,
-                  uint8_t *buffer,
-                  uint16_t preferred_size,
-                  int32_t *offset) {
-
+led_post_handler(void *request,
+                 void *response,
+                 uint8_t *buffer,
+                 uint16_t preferred_size,
+                 int32_t *offset,
+                 unsigned char led) {
   uint8_t b = coap_parse_bool(request);
   if (b == 1) {
-    leds_on(LEDS_GREEN);
+    leds_on(led);
   } else if (b == 0) {
-    leds_off(LEDS_GREEN);
+    leds_off(led);
   } else {
     REST.set_response_status(response, REST.status.BAD_REQUEST);
   }
+
+  // Update the nRF51822 state
+  nRF51822_set_led_state(leds_get());
+}
+
+static void
+led0_power_get_handler(void *request, void *response, uint8_t *buffer,
+                       uint16_t preferred_size, int32_t *offset) {
+  led_get_handler(request, response, buffer, preferred_size, offset, LEDS_GREEN);
+}
+
+static void
+led0_power_post_handler(void *request, void *response, uint8_t *buffer,
+                        uint16_t preferred_size, int32_t *offset) {
+  led_post_handler(request, response, buffer, preferred_size, offset, LEDS_GREEN);
 }
 
 /* A simple actuator example. Toggles the red led */
@@ -318,35 +334,15 @@ RESOURCE(coap_led0_power,
  ******************************************************************************/
 
 static void
-led1_power_get_handler(void *request,
-                       void *response,
-                       uint8_t *buffer,
-                       uint16_t preferred_size,
-                       int32_t *offset) {
-  int length;
-
-  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%s",
-    ((leds_get()&LEDS_RED)==LEDS_RED)?"true":"false");
-
-  REST.set_header_content_type(response, REST.type.TEXT_PLAIN);
-  REST.set_response_payload(response, buffer, length);
+led1_power_get_handler(void *request, void *response, uint8_t *buffer,
+                       uint16_t preferred_size, int32_t *offset) {
+  led_get_handler(request, response, buffer, preferred_size, offset, LEDS_RED);
 }
 
 static void
-led1_power_post_handler(void *request,
-                  void *response,
-                  uint8_t *buffer,
-                  uint16_t preferred_size,
-                  int32_t *offset) {
-
-  uint8_t b = coap_parse_bool(request);
-  if (b == 1) {
-    leds_on(LEDS_RED);
-  } else if (b == 0) {
-    leds_off(LEDS_RED);
-  } else {
-    REST.set_response_status(response, REST.status.BAD_REQUEST);
-  }
+led1_power_post_handler(void *request, void *response, uint8_t *buffer,
+                        uint16_t preferred_size, int32_t *offset) {
+  led_post_handler(request, response, buffer, preferred_size, offset, LEDS_RED);
 }
 
 /* A simple actuator example. Toggles the red led */
@@ -363,35 +359,15 @@ RESOURCE(coap_led1_power,
  ******************************************************************************/
 
 static void
-led2_power_get_handler(void *request,
-                       void *response,
-                       uint8_t *buffer,
-                       uint16_t preferred_size,
-                       int32_t *offset) {
-  int length;
-
-  length = snprintf((char*) buffer, REST_MAX_CHUNK_SIZE, "%s",
-    ((leds_get()&LEDS_BLUE)==LEDS_BLUE)?"true":"false");
-
-  REST.set_header_content_type(response, REST.type.TEXT_PLAIN);
-  REST.set_response_payload(response, buffer, length);
+led2_power_get_handler(void *request, void *response, uint8_t *buffer,
+                       uint16_t preferred_size, int32_t *offset) {
+  led_get_handler(request, response, buffer, preferred_size, offset, LEDS_BLUE);
 }
 
 static void
-led2_power_post_handler(void *request,
-                  void *response,
-                  uint8_t *buffer,
-                  uint16_t preferred_size,
-                  int32_t *offset) {
-
-  uint8_t b = coap_parse_bool(request);
-  if (b == 1) {
-    leds_on(LEDS_BLUE);
-  } else if (b == 0) {
-    leds_off(LEDS_BLUE);
-  } else {
-    REST.set_response_status(response, REST.status.BAD_REQUEST);
-  }
+led2_power_post_handler(void *request, void *response, uint8_t *buffer,
+                        uint16_t preferred_size, int32_t *offset) {
+  led_post_handler(request, response, buffer, preferred_size, offset, LEDS_BLUE);
 }
 
 /* A simple actuator example. Toggles the red led */
@@ -548,13 +524,13 @@ RESOURCE(coap_device_hardware_version,
          NULL);
 
 
-void handle_ble_interrupt(uint8_t type, uint8_t len, uint8_t* buf) {
-  if (type == BCP_RSP_LED) {
-    if (buf[0] == 0) {
-      leds_off(LEDS_ALL);
-    } else {
-      leds_on(LEDS_ALL);
-    }
+/*******************************************************************************
+ * Interface with the nRF51822
+ ******************************************************************************/
+
+void handle_ble_interrupt (uint8_t type, uint8_t len, uint8_t* buf) {
+  if (type == BCP_RSP_LED && len == 1) {
+    leds_arch_set(buf[0]);
   }
 }
 
@@ -591,14 +567,14 @@ PROCESS_THREAD(app, ev, data) {
   // CoAP + REST
   rest_init_engine();
 
-  rest_activate_resource(&coap_onoff_power,  "onoff/Power");
+  rest_activate_resource(&coap_onoff_power,             "onoff/Power");
 
-  rest_activate_resource(&coap_led0_power,         "led0/Power");
-  rest_activate_resource(&coap_led1_power,         "led1/Power");
-  rest_activate_resource(&coap_led2_power,         "led2/Power");
+  rest_activate_resource(&coap_led0_power,              "led0/Power");
+  rest_activate_resource(&coap_led1_power,              "led1/Power");
+  rest_activate_resource(&coap_led2_power,              "led2/Power");
 
-  rest_activate_resource(&coap_sdl_luxapose_frequency,      "sdl/luxapose/Frequency");
-  rest_activate_resource(&coap_sdl_luxapose_dutycycle,      "sdl/luxapose/DutyCycle");
+  rest_activate_resource(&coap_sdl_luxapose_frequency,  "sdl/luxapose/Frequency");
+  rest_activate_resource(&coap_sdl_luxapose_dutycycle,  "sdl/luxapose/DutyCycle");
 
   rest_activate_resource(&coap_device_software_version, "device/software/Version");
   rest_activate_resource(&coap_device_hardware_version, "device/hardware/Version");

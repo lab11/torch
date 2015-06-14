@@ -16,52 +16,71 @@
 
 nrf51822_data_cb nrf_callback = NULL;
 
-void nrf51822_interrupt(uint8_t port, uint8_t pin)
-{
-  uint16_t b;
-  uint8_t type;
-  uint8_t buf[256];
+// Send a packet to the nRF51822 while doing the bi-directional
+// thing and reading the packet it sends back
+static void send_and_read (uint8_t type, uint8_t length, uint8_t* buf) {
+  uint8_t response_len;
+  uint8_t response_buf[256];
   int i;
-
-  leds_toggle(LEDS_RED);
 
   spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 
   SPI_CS_CLR(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
 
-  // There have to be delays for the nRF51822 chip
+  // There have to be at least 7.1 us of delay between CS going low and the
+  // first clocked byte.
   clock_delay_usec(8);
 
-  // READ_IRQ
-  SPI_WRITE(0x01);
-  SPI_FLUSH();
+  // Send the type of the message we are transmitting
+  SPI_WRITE(type);
 
-  // Toggle CS to allow the nRF51822 to respond
-  SPI_CS_SET(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
-  clock_delay_usec(75);
-  SPI_CS_CLR(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
-  clock_delay_usec(8);
+  // Get the length of the response packet
+  SPI_WAITFOREORx();
+  response_len = SPI_RXBUF;
 
+  if (response_len == 0xFF) {
+    // This means the nRF51822 has nothing to tell us, so ignore that
+    response_len = 0;
+  }
 
   // Get data from the nRF
-  SPI_READ(b);
-  if (b == 0xFF) {
-    // ERROR on the nrf51822 side. Skip this.
-  } else {
-    for (i=0; i<b; i++) {
-      if (i == 0) {
-        SPI_READ(type);
-      } else {
-        SPI_READ(buf[i-1]);
-      }
+  for (i=0; (i<response_len || i<length); i++) {
+
+    if (i<length) {
+      // we still have data to send to the nRF
+      SPI_WRITE(buf[i]);
+    } else {
+      // we are only reading at this point
+      SPI_WRITE(0);
     }
+
+    // Make sure we have a response ready
+    SPI_WAITFOREORx();
+
+    if (i<response_len) {
+      // We are reading valid data from the nRF, so store that in the buffer
+      response_buf[i] = SPI_RXBUF;
+    } else {
+      // Just need to clear the RXBUF
+      SPI_RXBUF;
+    }
+
   }
 
   SPI_CS_SET(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
 
   if (nrf_callback != NULL) {
-    nrf_callback(type, b-1, buf);
+    if (response_buf[0] != 0) {
+      nrf_callback(response_buf[0], response_len-1, response_buf+1);
+    }
   }
+
+}
+
+// If we get an interrupt, execute a SPI transaction to the nRF51822
+// asking it what's up.
+void nrf51822_interrupt(uint8_t port, uint8_t pin) {
+  send_and_read(BCP_CMD_READ_IRQ, 0, NULL);
 }
 
 /**
@@ -71,6 +90,9 @@ void
 nrf51822_init(nrf51822_data_cb cb)
 {
   nrf_callback = cb;
+
+  // Set the clock speed at 2 MHz
+  REG(SSI0_BASE + SSI_CPSR) = 8;
 
   // Setup interrupt from nRF51822
   GPIO_SOFTWARE_CONTROL(NRF51822_INT_BASE, NRF51822_INT_MASK);
@@ -92,73 +114,12 @@ nrf51822_init(nrf51822_data_cb cb)
 
 
 void nrf51822_get_all_advertisements () {
-  //spi_set_mode(SSI_CR0_FRF_MOTOROLA, SSI_CR0_SPO, SSI_CR0_SPH, 8);
-  spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
-
-  SPI_CS_CLR(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
-clock_delay_usec(8);
-
-  // GET ADVERTISEMENTS
-  SPI_WRITE(0x02);
-
-  SPI_FLUSH();
-
-  SPI_CS_SET(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
+  send_and_read(BCP_CMD_SNIFF_ADVERTISEMENTS, 0, NULL);
 }
 
+void nRF51822_set_led_state (uint8_t state) {
+  uint8_t buf[1];
 
-// int
-// fm25l04b_read(uint16_t address, uint16_t len, uint8_t *buf)
-// {
-//   uint16_t i;
-//   uint16_t current_address = address;
-
-//   spi_set_mode(SSI_CR0_FRF_MOTOROLA, SSI_CR0_SPO, SSI_CR0_SPH, 8);
-
-//   SPI_CS_CLR(FM25L04B_CS_N_PORT_NUM, FM25L04B_CS_N_PIN);
-
-//   /* Send the READ command and the address to the FRAM */
-//   SPI_WRITE(FM25L04B_ADD_ADDRESS_BIT(current_address, FM25L04B_READ_COMMAND));
-//   SPI_WRITE(current_address & 0xFF);
-
-//   SPI_FLUSH();
-
-//   for (i=0; i<len; i++) {
-//     SPI_READ(buf[i]);
-//   }
-
-//   SPI_CS_SET(FM25L04B_CS_N_PORT_NUM, FM25L04B_CS_N_PIN);
-
-//   return 0;
-// }
-
-
-// int
-// fm25l04b_write(uint16_t address, uint16_t len, uint8_t *buf)
-// {
-//   uint16_t i;
-
-//   spi_set_mode(SSI_CR0_FRF_MOTOROLA, SSI_CR0_SPO, SSI_CR0_SPH, 8);
-
-
-//   SPI_CS_CLR(FM25L04B_CS_N_PORT_NUM, FM25L04B_CS_N_PIN);
-
-//   /* Send the WRITE ENABLE command to allow writing to the FRAM */
-//   SPI_WRITE(FM25L04B_WRITE_ENABLE_COMMAND);
-
-//   SPI_CS_SET(FM25L04B_CS_N_PORT_NUM, FM25L04B_CS_N_PIN);
-//   SPI_CS_CLR(FM25L04B_CS_N_PORT_NUM, FM25L04B_CS_N_PIN);
-
-//   /* Send the WRITE command and the address to the FRAM */
-//   SPI_WRITE(FM25L04B_ADD_ADDRESS_BIT(address, FM25L04B_WRITE_COMMAND));
-//   SPI_WRITE(address & 0xFF);
-
-//   /* Send the data to write */
-//   for(i=0; i<len; i++) {
-//     SPI_WRITE(buf[i]);
-//   }
-
-//   SPI_CS_SET(FM25L04B_CS_N_PORT_NUM, FM25L04B_CS_N_PIN);
-
-//   return 0;
-// }
+  buf[0] = state;
+  send_and_read(BCP_CMD_UPDATE_LED_STATE, 1, buf);
+}

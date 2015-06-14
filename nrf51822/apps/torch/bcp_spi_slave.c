@@ -9,7 +9,7 @@
 #include "bcp_spi_slave.h"
 #include "interrupt_event_queue.h"
 
-uint8_t spi_tx_buf[SPI_BUF_LEN] = {0};
+uint8_t spi_tx_buf[SPI_BUF_LEN] = {0xFF};
 uint8_t spi_rx_buf[SPI_BUF_LEN] = {0};
 
 // Keep track of whether we have put data into the SPI buffer or not.
@@ -43,11 +43,9 @@ void spi_slave_notify() {
 			                                 spi_rx_buf,
 			                                 SPI_BUF_LEN,
 			                                 SPI_BUF_LEN);
-
 			APP_ERROR_CHECK(err_code);
 
-			// Set the interrupt line high
-			bcp_interrupt_host();
+			// The interrupt will be send to the CC2538 when the data is loaded
 		}
 	}
 }
@@ -59,7 +57,6 @@ static void spi_slave_event_handle(spi_slave_evt_t event) {
 
 	// Check the event type. There are only two events, and only one is useful.
 	if (event.evt_type == SPI_SLAVE_XFER_DONE) {
-
 		// The first byte is the command byte
 		switch (spi_rx_buf[0]) {
 
@@ -72,6 +69,11 @@ static void spi_slave_event_handle(spi_slave_evt_t event) {
 			// bcp_sniff_advertisements();
 			break;
 
+		  case BCP_CMD_UPDATE_LED_STATE:
+		    // The LEDs on the CC2538 changed, update the characteristic
+			main_set_led_state(spi_rx_buf[1]);
+			break;
+
 		  default:
 			break;
 		}
@@ -82,7 +84,7 @@ static void spi_slave_event_handle(spi_slave_evt_t event) {
 			// thing from the queue
 			uint8_t data_len;
 			uint8_t len;
-			uint8_t  response_type;
+			uint8_t response_type;
 
 			data_len = interrupt_event_queue_get(&response_type, spi_tx_buf+2);
 
@@ -95,32 +97,39 @@ static void spi_slave_event_handle(spi_slave_evt_t event) {
 				spi_tx_buf[1] = response_type;
 
 				// Send the TX buffer to the SPI module
+				buffer_full = true;
 				err_code = spi_slave_buffers_set(spi_tx_buf,
 				                                 spi_rx_buf,
 				                                 SPI_BUF_LEN,
 				                                 SPI_BUF_LEN);
 
-		// nrf_gpio_pin_toggle(3);
 				APP_ERROR_CHECK(err_code);
-
-				// Set the interrupt line high
-				bcp_interrupt_host();
-				buffer_full = true;
 
 			} else {
 
 				// Still need to set the RX buffer as the reception
 				// destination
+				buffer_full = false;
+				memset(spi_tx_buf, 0x0, SPI_BUF_LEN);
+				memset(spi_rx_buf, 0x0, SPI_BUF_LEN);
 				err_code = spi_slave_buffers_set(spi_tx_buf,
 				                                 spi_rx_buf,
 				                                 SPI_BUF_LEN,
 				                                 SPI_BUF_LEN);
+				APP_ERROR_CHECK(err_code);
 
-				buffer_full = false;
 				bcp_interupt_host_clear();
 			}
 		}
 
+	} else if (event.evt_type == SPI_SLAVE_BUFFERS_SET_DONE) {
+		nrf_gpio_pin_toggle(24);
+		// If we set the buffers, we must have data we want to send
+		// to the host
+		if (buffer_full) {
+			// Set the interrupt line high
+			bcp_interrupt_host();
+		}
 	}
 
 }
@@ -148,7 +157,7 @@ uint32_t spi_slave_example_init(void)
 	err_code = spi_slave_init(&spi_slave_config);
 	APP_ERROR_CHECK(err_code);
 
-	// Set buffers.
+	// Set buffers so we can receive
 	err_code = spi_slave_buffers_set(spi_tx_buf,
 									 spi_rx_buf,
 									 SPI_BUF_LEN,
