@@ -23,7 +23,7 @@ static void send_and_read (uint8_t type, uint8_t length, uint8_t* buf) {
   uint8_t response_buf[256];
   int i;
 
-  spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+  spix_set_mode(NRF51822_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 
   SPI_CS_CLR(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
 
@@ -108,8 +108,8 @@ nrf51822_init(nrf51822_data_cb cb)
                          NRF51822_INT_PIN);
 
 
-  spi_cs_init(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
-  SPI_CS_SET(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
+  spix_cs_init(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
+  SPIX_CS_SET(NRF51822_CS_N_PORT_NUM, NRF51822_CS_N_PIN);
 }
 
 

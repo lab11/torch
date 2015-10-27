@@ -39,6 +39,8 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
+
+ #include "sst25vf.h"
 /*---------------------------------------------------------------------------*/
 #if STARTUP_CONF_VERBOSE
 #define PRINTF(...) printf(__VA_ARGS__)

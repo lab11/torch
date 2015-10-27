@@ -27,7 +27,7 @@ void sst25vf_default_callback() {}
 
 
 static inline void set_flash_cs() {
-	SPI_CS_SET(SST25VF_CS_PORT_NUM, SST25VF_CS_PIN);
+	SPIX_CS_SET(SST25VF_CS_PORT_NUM, SST25VF_CS_PIN);
 }
 
 static inline void clr_flash_cs() {
@@ -58,7 +58,7 @@ static inline void enable_writes() {
 
 static inline void runSpiByteRx(uint8_t *cmdBuffer, uint8_t *rxBuffer, uint32_t rx_len) {
 	INTERRUPTS_DISABLE();
-	spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+	spix_set_mode(SST25VF_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 	SPI_FLUSH();
 	clr_flash_cs();
 	for(i = 0; i < 4; i++) {
@@ -73,7 +73,7 @@ static inline void runSpiByteRx(uint8_t *cmdBuffer, uint8_t *rxBuffer, uint32_t 
 }
 static inline void runSpiByteRxShort(uint8_t *cmdBuffer, uint8_t *rxBuffer, uint32_t rx_len) {
 	INTERRUPTS_DISABLE();
-	spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+	spix_set_mode(SST25VF_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 	SPI_FLUSH();
 	clr_flash_cs();
 	for(i = 0; i < 1; i++) {
@@ -89,7 +89,7 @@ static inline void runSpiByteRxShort(uint8_t *cmdBuffer, uint8_t *rxBuffer, uint
 
 static inline void runSpiByteTx(uint8_t *cmdBuffer, uint8_t *txBuffer, uint32_t tx_len) {
 	INTERRUPTS_DISABLE();
-	spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+	spix_set_mode(SST25VF_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 	SPI_FLUSH();
 	clr_flash_cs();
 	for(i = 0; i < 4; i++) {
@@ -110,7 +110,7 @@ static inline void shiftPageAddr(uint32_t user_addr) {
 
 static inline void runSingleCommand(uint8_t cmd) {
 	INTERRUPTS_DISABLE();
-	spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+	spix_set_mode(SST25VF_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 	SPI_FLUSH();
 	clr_flash_cs();
 	SPI_WRITE(cmd);
@@ -216,7 +216,7 @@ void sst25vf_read_sid(uint8_t addr, uint8_t *rxBuffer, uint8_t rx_len) {
 	cmdBuffer[0] = READ_SID;
 	cmdBuffer[1] = addr;
 	cmdBuffer[2] = 0;
-	spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+	spix_set_mode(SST25VF_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 	SPI_FLUSH();
 	clr_flash_cs();
 	SPI_WRITE(cmdBuffer[0]);
@@ -236,7 +236,7 @@ void sst25vf_program_sid(uint8_t addr, uint8_t *txBuffer, uint8_t tx_len) {
 	cmdBuffer[1] = addr;
 
 	enable_writes();
-	spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+	spix_set_mode(SST25VF_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 	SPI_FLUSH();
 	clr_flash_cs();
 	SPI_WRITE(cmdBuffer[0]);
@@ -252,7 +252,7 @@ void sst25vf_program_sid(uint8_t addr, uint8_t *txBuffer, uint8_t tx_len) {
 uint8_t sst25vf_read_status_register() {
 	INTERRUPTS_DISABLE();
 	uint8_t status_buffer = 0;
-	spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+	spix_set_mode(SST25VF_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 	SPI_FLUSH();
 	clr_flash_cs();
 	SPI_WRITE(RDSR);
@@ -352,7 +352,7 @@ void sst25vf_ewsr() {
 
 void sst25vf_write_status_register(uint8_t status_data) {
 	sst25vf_ewsr();
-	spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+	spix_set_mode(SST25VF_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 	SPI_FLUSH();
 	clr_flash_cs();
 	SPI_WRITE(WRSR);
@@ -361,8 +361,8 @@ void sst25vf_write_status_register(uint8_t status_data) {
 }
 
 void sst25vf_init() {
-	spi_cs_init(SST25VF_CS_PORT_NUM, SST25VF_CS_PIN);
-	spi_set_mode(SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
+	spix_cs_init(SST25VF_CS_PORT_NUM, SST25VF_CS_PIN);
+	spix_set_mode(SST25VF_SPI_BUS, SSI_CR0_FRF_MOTOROLA, 0, 0, 8);
 
 	// init pins
 	GPIO_SOFTWARE_CONTROL(GPIO_PORT_TO_BASE(SST25VF_HOLD_PORT_NUM), GPIO_PIN_MASK(SST25VF_HOLD_PIN));

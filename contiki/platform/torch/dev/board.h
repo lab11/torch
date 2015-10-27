@@ -117,6 +117,7 @@
 #define NRF51822_INT_BASE      GPIO_PORT_TO_BASE(NRF51822_INT_PORT_NUM)
 #define NRF51822_INT_MASK      GPIO_PIN_MASK(NRF51822_INT_PIN)
 
+#define NRF51822_SPI_BUS       0
 #define NRF51822_CS_N_PORT_NUM GPIO_B_NUM
 #define NRF51822_CS_N_PIN      3
 /** @} */
@@ -138,6 +139,7 @@
 /** \name Flash
  *
  */
+#define SST25VF_SPI_BUS          0
 #define SST25VF_CS_PORT_NUM      GPIO_C_NUM
 #define SST25VF_CS_PIN           3
 #define SST25VF_WP_PORT_NUM      GPIO_C_NUM
@@ -212,12 +214,12 @@
  * These values configure which CC2538 pins to use for the SPI lines.
  * @{
  */
-#define SPI_CLK_PORT             GPIO_A_NUM
-#define SPI_CLK_PIN              5
-#define SPI_MOSI_PORT            GPIO_A_NUM
-#define SPI_MOSI_PIN             4
-#define SPI_MISO_PORT            GPIO_A_NUM
-#define SPI_MISO_PIN             3
+#define SPI0_CLK_PORT           GPIO_A_NUM
+#define SPI0_CLK_PIN            5
+#define SPI0_TX_PORT            GPIO_A_NUM
+#define SPI0_TX_PIN             4
+#define SPI0_RX_PORT            GPIO_A_NUM
+#define SPI0_RX_PIN             3
 /** @} */
 /*---------------------------------------------------------------------------*/
 /**
