@@ -13,6 +13,7 @@
 // response types
 #define BCP_RSP_ADVERTISEMENT 1  // send the raw advertisement content
 #define BCP_RSP_LED           2
+#define BCP_RSP_WHITE_LIGHT   3  // control the duty cycle of the main led
 
 // Send all received advertisements to the host
 void bcp_sniff_advertisements ();

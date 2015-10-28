@@ -47,8 +47,9 @@ See bcp.h for the list of valid commands the SPI master can issue.
 bool bcp_irq_advertisements = false;
 
 
-#define TORCH_SHORT_UUID             0x65b8 // service UUID
-#define TORCH_CHAR_LED_SHORT_UUID    0x65b9 // control the LEDs on CC2538
+#define TORCH_SHORT_UUID               0x65b8 // service UUID
+#define TORCH_CHAR_LED_SHORT_UUID      0x65b9 // control the LEDs on CC2538
+#define TORCH_CHAR_WHITELED_SHORT_UUID 0x65ba // control the LEDs on CC2538
 
 // Randomly generated UUID for the torch
 const ble_uuid128_t torch_uuid128 = {
@@ -102,12 +103,8 @@ void bcp_interupt_host_clear () {
 
 
 
-
-
-/**@brief Function for handling the WRITE event.
- */
-static void on_write (ble_evt_t* p_ble_evt)
-{
+// Function for handling the WRITE CHARACTERISTIC BLE event.
+void ble_evt_write (ble_evt_t* p_ble_evt) {
     ble_gatts_evt_write_t* p_evt_write = &p_ble_evt->evt.gatts_evt.params.write;
 
     if (p_evt_write->handle == app.char_led_handles.value_handle) {
@@ -115,6 +112,13 @@ static void on_write (ble_evt_t* p_ble_evt)
 
         // Notify the CC2538 that the LED characteristic was written to
         interrupt_event_queue_add(BCP_RSP_LED, 1, p_evt_write->data);
+
+    } else if (p_evt_write->handle == app.char_whiteled_handles.value_handle) {
+        app.whiteled_dutycycle = p_evt_write->data[0];
+
+        // Notify the CC2538 that the LED characteristic was written to
+        interrupt_event_queue_add(BCP_RSP_WHITE_LIGHT, 1, p_evt_write->data);
+
     }
 }
 
@@ -156,6 +160,14 @@ void services_init (void) {
                                   1, &app.led_state,
                                   app.service_handle,
                                   &app.char_led_handles);
+
+    //add the characteristic that exposes a blob of interrupt response
+    simple_ble_add_characteristic(1, 1, 0,  // read, write, notify
+                                  torch_uuid.type,
+                                  TORCH_CHAR_WHITELED_SHORT_UUID,
+                                  1, &app.whiteled_dutycycle,
+                                  app.service_handle,
+                                  &app.char_whiteled_handles);
 
 
 

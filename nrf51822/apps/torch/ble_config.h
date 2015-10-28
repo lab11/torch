@@ -86,8 +86,10 @@ typedef struct ble_app_s
     uint16_t                     service_handle;                        /**< Handle of DFU Service (as provided by the S110 SoftDevice). */
     uint8_t                      uuid_type;                             /**< UUID type assigned for DFU Service by the S110 SoftDevice. */
     ble_gatts_char_handles_t     char_led_handles;                       /**< Handles related to the DFU Packet characteristic. */
+    ble_gatts_char_handles_t     char_whiteled_handles;                       /**< Handles related to the DFU Packet characteristic. */
     ble_srv_error_handler_t      error_handler;                         /**< Function to be called in case of an error. */
     uint8_t                     led_state;                             /** Value of num characteristic */
+    uint8_t                     whiteled_dutycycle;                             /** Value of num characteristic */
 } ble_app_t;
 
 #endif

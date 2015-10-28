@@ -26,5 +26,6 @@ void nRF51822_set_led_state (uint8_t state);
 // response types
 #define BCP_RSP_ADVERTISEMENT 1  // send the raw advertisement content
 #define BCP_RSP_LED           2
+#define BCP_RSP_WHITE_LIGHT   3  // configure the main bright white led
 
 #endif
