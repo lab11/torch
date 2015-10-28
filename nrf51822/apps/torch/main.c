@@ -33,7 +33,7 @@ See bcp.h for the list of valid commands the SPI master can issue.
 #include "app_timer.h"
 
 #include "simple_ble.h"
-#include "simple_adv.h"
+#include "eddystone.h"
 
 #include "led.h"
 #include "boards.h"
@@ -43,6 +43,7 @@ See bcp.h for the list of valid commands the SPI master can issue.
 #include "bcp.h"
 #include "interrupt_event_queue.h"
 
+#define PHYSWEB_URL "goo.gl/449K5X"
 
 bool bcp_irq_advertisements = false;
 
@@ -133,15 +134,6 @@ static void timers_init(void) {
     uint32_t err_code;
 
     APP_TIMER_INIT(APP_TIMER_PRESCALER, APP_TIMER_MAX_TIMERS, APP_TIMER_OP_QUEUE_SIZE, false);
-
-    // err_code = app_timer_create(&characteristic_timer,
-    //                             APP_TIMER_MODE_REPEATED,
-    //                             timer_handler);
-    // APP_ERROR_CHECK(err_code);
-
-    // // Start timer to update characteristic
-    // err_code = app_timer_start(characteristic_timer, UPDATE_RATE, NULL);
-    // APP_ERROR_CHECK(err_code);
 }
 
 
@@ -168,77 +160,6 @@ void services_init (void) {
                                   1, &app.whiteled_dutycycle,
                                   app.service_handle,
                                   &app.char_whiteled_handles);
-
-
-
-
-
-    // uint32_t err_code;
-
-    // // Setup our long UUID so that nRF recognizes it. This is done by
-    // // storing the full UUID and essentially using `torch_uuid`
-    // // as a handle.
-    // torch_uuid.uuid = TORCH_SHORT_UUID;
-    // err_code = sd_ble_uuid_vs_add(&torch_uuid128, &(torch_uuid.type));
-    // APP_ERROR_CHECK(err_code);
-    // app.uuid_type = torch_uuid.type;
-
-    // // Add the custom service to the system
-    // err_code = sd_ble_gatts_service_add(BLE_GATTS_SRVC_TYPE_PRIMARY,
-    //                                     &torch_uuid,
-    //                                     &(app.service_handle));
-    // APP_ERROR_CHECK(err_code);
-
-    // // Add the LED characteristic to the service
-    // {
-    //     ble_gatts_char_md_t char_md;
-    //     ble_gatts_attr_t    attr_char_value;
-    //     ble_uuid_t          char_uuid;
-    //     ble_gatts_attr_md_t attr_md;
-
-    //     // Init value
-    //     app.led_state = 0;
-
-    //     memset(&char_md, 0, sizeof(char_md));
-
-    //     // This characteristic is a read & write
-    //     char_md.char_props.read          = 1;
-    //     char_md.char_props.write         = 1;
-    //     char_md.p_char_user_desc         = NULL;
-    //     char_md.p_char_pf                = NULL;
-    //     char_md.p_user_desc_md           = NULL;
-    //     char_md.p_cccd_md                = NULL;
-    //     char_md.p_sccd_md                = NULL;
-
-    //     char_uuid.type = app.uuid_type;
-    //     char_uuid.uuid = TORCH_CHAR_LED_SHORT_UUID;
-
-    //     memset(&attr_md, 0, sizeof(attr_md));
-
-    //     BLE_GAP_CONN_SEC_MODE_SET_OPEN(&attr_md.read_perm);
-    //     BLE_GAP_CONN_SEC_MODE_SET_OPEN(&attr_md.write_perm);
-
-    //     attr_md.vloc    = BLE_GATTS_VLOC_USER;
-    //     attr_md.rd_auth = 0;
-    //     attr_md.wr_auth = 0;
-    //     attr_md.vlen    = 1;
-
-    //     memset(&attr_char_value, 0, sizeof(attr_char_value));
-
-    //     attr_char_value.p_uuid    = &char_uuid;
-    //     attr_char_value.p_attr_md = &attr_md;
-    //     attr_char_value.init_len  = 1;
-    //     attr_char_value.init_offs = 0;
-    //     attr_char_value.max_len   = 1;
-    //     attr_char_value.p_value   = (uint8_t*) &app.led_state;
-
-    //     err_code = sd_ble_gatts_characteristic_add(app.service_handle,
-    //                                                &char_md,
-    //                                                &attr_char_value,
-    //                                                &app.char_led_handles);
-    //     APP_ERROR_CHECK(err_code);
-    // }
-
 }
 
 
@@ -254,7 +175,14 @@ int main(void) {
 
     // Setup BLE and services
     simple_ble_app = simple_ble_init(&ble_config);
-    simple_adv_service(&torch_uuid);
+    //simple_adv_service(&torch_uuid);
+
+    // Setup the advertisement to use the Eddystone format.
+    // We include the device name in the scan response
+    ble_advdata_t srdata;
+    memset(&srdata, 0, sizeof(srdata));
+    srdata.name_type = BLE_ADVDATA_FULL_NAME;
+    eddystone_adv(PHYSWEB_URL, &srdata);
 
     timers_init();
 
