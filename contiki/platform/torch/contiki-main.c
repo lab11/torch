@@ -102,17 +102,25 @@ main(void)
 
   leds_init();
 
+
+
+
   process_init();
 
-  watchdog_init();
+ // watchdog_init();
   //button_sensor_init();
   spi_init();
   //fm25l04b_init();
   //rv3049_init();
 
+
+
+
   rfswitch_init();
   sst25vf_init();
   sst25vf_turn_on();
+
+
 
   /*
    * Character I/O Initialization.
@@ -135,9 +143,15 @@ main(void)
   usb_serial_set_input(serial_line_input_byte);
 #endif
 
-  serial_line_init();
+
+
+  //serial_line_init();
+// leds_on(LEDS_ALL);
+
 
   INTERRUPTS_ENABLE();
+
+
 
   PUTS(CONTIKI_VERSION_STRING);
   PUTS(BOARD_STRING);

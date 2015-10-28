@@ -77,20 +77,20 @@
 #undef LEDS_RED
 #undef LEDS_CONF_ALL
 
-#define LEDS_BLUE                16 /**< PD4 */
-#define LEDS_RED                 8  /**< PD3 */
-#define LEDS_GREEN               32 /**< PD5 */
-#define LEDS_CONF_ALL            56
+#define LEDS_BLUE                4  /**< PC2 */
+#define LEDS_RED                 2  /**< PC1 */
+#define LEDS_GREEN               1  /**< PC0 */
+#define LEDS_CONF_ALL            7
 
 /* Notify various examples that we have LEDs */
 #define PLATFORM_HAS_LEDS        1
 
-#define LED_BLUE_BASE            GPIO_D_BASE
-#define LED_RED_BASE             GPIO_D_BASE
-#define LED_GREEN_BASE           GPIO_D_BASE
-#define LED_BLUE_MASK            GPIO_PIN_MASK(4)
-#define LED_RED_MASK             GPIO_PIN_MASK(3)
-#define LED_GREEN_MASK           GPIO_PIN_MASK(5)
+#define LED_BLUE_BASE            GPIO_C_BASE
+#define LED_RED_BASE             GPIO_C_BASE
+#define LED_GREEN_BASE           GPIO_C_BASE
+#define LED_BLUE_MASK            GPIO_PIN_MASK(2)
+#define LED_RED_MASK             GPIO_PIN_MASK(1)
+#define LED_GREEN_MASK           GPIO_PIN_MASK(0)
 
 
 // #define LEDS_BLUE                4  /**< PC2 */
