@@ -531,6 +531,9 @@ RESOURCE(coap_device_hardware_version,
 void handle_ble_interrupt (uint8_t type, uint8_t len, uint8_t* buf) {
   if (type == BCP_RSP_LED && len == 1) {
     leds_arch_set(buf[0]);
+
+  } else if (type == BCP_RSP_WHITE_LIGHT) {
+    light_set_dc(buf[0]);
   }
 }
 
