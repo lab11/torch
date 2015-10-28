@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- HTML for Template Summon UI -->
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+        <link rel="stylesheet" href="css/font-awesome-4.4.0/css/font-awesome.min.css">
+
+        <link rel="shortcut icon" type="image/x-icon" href="img/polypoint.ico" />
+
+        <title>Software Defined Lighting - Torch</title>
+    </head>
+    <!-- <body id="main_view" data-role="main" class="frame"> -->
+    <body id="main_view" class="frame">
+
+        <div id="header-title">
+       <!--  <div id="header-title" data-role="header" data-theme="b"> -->
+            <h1 id="title">Torch</h1>
+            <h3>[ Software Defined Lighting ]</h3>
+        </div>
+
+        <div id="device-id">
+            SDL ID: <span id="device-id-span"></span>
+        </div>
+
+        <div id="lighting">
+            <h3>Brightness</h3>
+            <input type="range" id="sdl-whiteled-brightness" min="0" max="100" value="0" step="1" onchange="update_from_slider(this.value)">
+        </div>
+
+        <div data-display="overlay" data-swipe-close="true" data-dismissible="false" data-position="right" data-role="panel" id="logPanel">
+            <h3>Log</h3>
+            <p id="console"></p>
+       </div>
+
+       <script type='text/javascript'>
+        $(document).on('pageinit',function(){
+            $("#main_view").on("swipeleft",function(){
+                $("#logPanel").panel("open");
+            });
+        });
+        </script>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/numeric-1.2.6.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
