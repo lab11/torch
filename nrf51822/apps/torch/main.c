@@ -52,14 +52,13 @@ bool bcp_irq_advertisements = false;
 #define TORCH_CHAR_LED_SHORT_UUID      0x65b9 // control the LEDs on CC2538
 #define TORCH_CHAR_WHITELED_SHORT_UUID 0x65ba // control the LEDs on CC2538
 
-// Randomly generated UUID for the torch
-const ble_uuid128_t torch_uuid128 = {
-    {0xef, 0x1d, 0x66, 0x4d, 0x06, 0xa5, 0x4f, 0x0a,
-     0x93, 0x31, 0x23, 0x8c, 0x65, 0xb8, 0x7e, 0xb9}
+// service and characteristic handles
+simple_ble_service_t service_handle = {
+    .uuid128 = {{0xef, 0x1d, 0x66, 0x4d, 0x06, 0xa5, 0x4f, 0x0a,
+                 0x93, 0x31, 0x23, 0x8c, 0x65, 0xb8, 0x7e, 0xb9}}
 };
-
-ble_uuid_t torch_uuid = {TORCH_SHORT_UUID, BLE_UUID_TYPE_BLE};
-
+simple_ble_char_t char_led_handles = {.uuid16 = TORCH_CHAR_LED_SHORT_UUID};
+simple_ble_char_t char_whiteled_handles = {.uuid16 = TORCH_CHAR_WHITELED_SHORT_UUID};
 
 
 // State for this application
@@ -108,13 +107,13 @@ void bcp_interupt_host_clear () {
 void ble_evt_write (ble_evt_t* p_ble_evt) {
     ble_gatts_evt_write_t* p_evt_write = &p_ble_evt->evt.gatts_evt.params.write;
 
-    if (p_evt_write->handle == app.char_led_handles.value_handle) {
+    if (simple_ble_is_char_event(p_ble_evt, &char_led_handles)) {
         app.led_state = p_evt_write->data[0];
 
         // Notify the CC2538 that the LED characteristic was written to
         interrupt_event_queue_add(BCP_RSP_LED, 1, p_evt_write->data);
 
-    } else if (p_evt_write->handle == app.char_whiteled_handles.value_handle) {
+    } else if (simple_ble_is_char_event(p_ble_evt, &char_whiteled_handles)) {
         app.whiteled_dutycycle = p_evt_write->data[0];
 
         // Notify the CC2538 that the LED characteristic was written to
@@ -130,40 +129,26 @@ void ble_evt_write (ble_evt_t* p_ble_evt) {
  ******************************************************************************/
 
 
-static void timers_init(void) {
-    uint32_t err_code;
-
-    APP_TIMER_INIT(APP_TIMER_PRESCALER, APP_TIMER_MAX_TIMERS, APP_TIMER_OP_QUEUE_SIZE, false);
-}
-
-
-
 void services_init (void) {
 
-
-    app.service_handle = simple_ble_add_service(&torch_uuid128,
-                                                &torch_uuid,
-                                                TORCH_SHORT_UUID);
+    simple_ble_add_service(&service_handle);
 
     //add the characteristic that exposes a blob of interrupt response
-    simple_ble_add_characteristic(1, 1, 0,  // read, write, notify
-                                  torch_uuid.type,
-                                  TORCH_CHAR_LED_SHORT_UUID,
+    simple_ble_add_characteristic(1, 1, 0, 0,  // read, write, notify, vlen
                                   1, &app.led_state,
-                                  app.service_handle,
-                                  &app.char_led_handles);
+                                  &service_handle,
+                                  &char_led_handles);
 
     //add the characteristic that exposes a blob of interrupt response
-    simple_ble_add_characteristic(1, 1, 0,  // read, write, notify
-                                  torch_uuid.type,
-                                  TORCH_CHAR_WHITELED_SHORT_UUID,
+    simple_ble_add_characteristic(1, 1, 0, 0,  // read, write, notify, vlen
                                   1, &app.whiteled_dutycycle,
-                                  app.service_handle,
-                                  &app.char_whiteled_handles);
+                                  &service_handle,
+                                  &char_whiteled_handles);
 }
 
-
-
+void initialize_app_timers (void) {
+    APP_TIMER_INIT(APP_TIMER_PRESCALER, APP_TIMER_MAX_TIMERS, APP_TIMER_OP_QUEUE_SIZE, false);
+}
 
 int main(void) {
     //
@@ -184,8 +169,6 @@ int main(void) {
     srdata.name_type = BLE_ADVDATA_FULL_NAME;
     eddystone_adv(PHYSWEB_URL, &srdata);
 
-    timers_init();
-
     // Make this a SPI slave to the CC2538
     spi_slave_example_init();
 
@@ -194,3 +177,4 @@ int main(void) {
         power_manage();
     }
 }
+

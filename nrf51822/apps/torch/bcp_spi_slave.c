@@ -1,4 +1,7 @@
 
+#include <stdio.h>
+#include <string.h>
+
 #include "app_error.h"
 #include "spi_slave.h"
 
@@ -8,6 +11,8 @@
 #include "bcp.h"
 #include "bcp_spi_slave.h"
 #include "interrupt_event_queue.h"
+
+extern void main_set_led_state(uint8_t);
 
 uint8_t spi_tx_buf[SPI_BUF_LEN] = {0xFF};
 uint8_t spi_rx_buf[SPI_BUF_LEN] = {0};
@@ -49,7 +54,6 @@ void spi_slave_notify() {
 		}
 	}
 }
-
 
 // Callback after a SPI transaction completes (CS goes back high).
 static void spi_slave_event_handle(spi_slave_evt_t event) {

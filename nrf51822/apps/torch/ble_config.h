@@ -41,8 +41,6 @@
 
 //time from initiating event(conn or notify start) to first time param_update c
 //called
-#define FIRST_CONN_PARAMS_UPDATE_DELAY  APP_TIMER_TICKS(5000, APP_TIMER_PRESCALER)
-
 
 #define NEXT_CONN_PARAMS_UPDATE_DELAY   APP_TIMER_TICKS(30000, APP_TIMER_PRESCALER)
 
@@ -82,12 +80,7 @@
 typedef struct ble_app_s
 {
     uint16_t                     conn_handle;                           /**< Handle of the current connection (as provided by the S110 SoftDevice). This will be BLE_CONN_HANDLE_INVALID when not in a connection. */
-    // uint16_t                     revision;                              /**< Handle of DFU Service (as provided by the S110 SoftDevice). */
-    uint16_t                     service_handle;                        /**< Handle of DFU Service (as provided by the S110 SoftDevice). */
     uint8_t                      uuid_type;                             /**< UUID type assigned for DFU Service by the S110 SoftDevice. */
-    ble_gatts_char_handles_t     char_led_handles;                       /**< Handles related to the DFU Packet characteristic. */
-    ble_gatts_char_handles_t     char_whiteled_handles;                       /**< Handles related to the DFU Packet characteristic. */
-    ble_srv_error_handler_t      error_handler;                         /**< Function to be called in case of an error. */
     uint8_t                     led_state;                             /** Value of num characteristic */
     uint8_t                     whiteled_dutycycle;                             /** Value of num characteristic */
 } ble_app_t;
